@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Filament\Models\Contracts\HasCurrentTenantLabel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -37,10 +38,15 @@ class Store extends Model implements HasCurrentTenantLabel
         return $this->belongsToMany(User::class);
     }
 
-    // public function products(): HasMany
-    // {
-    //     return $this->hasMany(Product::class);
-    // }
+    public function store_categorie(): BelongsTo
+    {
+        return $this->belongsTo(StoreCategorie::class);
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 
     public static function getStoreUrl(): string
     {
