@@ -17,6 +17,6 @@ class StoreCategorie extends Model
 
     public function categories(): HasMany
     {
-        return $this->hasMany(Categorie::class);
+        return $this->hasMany(Category::class);
     }
 }

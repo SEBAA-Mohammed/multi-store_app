@@ -21,13 +21,13 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function satut(): BelongsTo
+    public function status(): BelongsTo
     {
-        return $this->belongsTo(Statut::class);
+        return $this->belongsTo(Status::class);
     }
 
-    public function modePaiement(): BelongsTo
+    public function paymentMethod(): BelongsTo
     {
-        return $this->belongsTo(ModePaiement::class);
+        return $this->belongsTo(PaymentMethod::class);
     }
 }

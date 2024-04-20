@@ -21,7 +21,7 @@ return new class extends Migration
             $table->double('stock');
             $table->double('rating');
             $table->foreignId('categorie_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('marque_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('unite_id')->constrained()->cascadeOnDelete();
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

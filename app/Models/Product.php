@@ -28,17 +28,17 @@ class Product extends Model
 
     public function categorie(): BelongsTo
     {
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function marque(): BelongsTo
+    public function brand(): BelongsTo
     {
-        return $this->belongsTo(Marque::class);
+        return $this->belongsTo(Brand::class);
     }
 
-    public function unite(): BelongsTo
+    public function unit(): BelongsTo
     {
-        return $this->belongsTo(Unite::class);
+        return $this->belongsTo(Unit::class);
     }
 
     public function store(): BelongsTo
