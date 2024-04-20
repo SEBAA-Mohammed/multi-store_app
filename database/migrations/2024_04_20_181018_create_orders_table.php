@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamp('datetime_order');
             $table->string('adresse_livraison');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('mode_paiement_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('statut_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('payment_method_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('status_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

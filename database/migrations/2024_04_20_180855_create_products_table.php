@@ -20,9 +20,9 @@ return new class extends Migration
             $table->text('description');
             $table->double('stock');
             $table->double('rating');
-            $table->foreignId('categorie_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('unite_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('unit_id')->constrained()->cascadeOnDelete();
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

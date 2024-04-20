@@ -18,7 +18,7 @@ class Product extends Model
 
     public function productImages(): HasMany
     {
-        return $this->hasMany(ProductImages::class);
+        return $this->hasMany(ProductImage::class);
     }
 
     public function ratings(): HasMany
@@ -26,7 +26,7 @@ class Product extends Model
         return $this->hasMany(Rating::class);
     }
 
-    public function categorie(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

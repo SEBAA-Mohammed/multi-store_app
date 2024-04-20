@@ -11,7 +11,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function oredrDetails(): HasMany
+    public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
     }

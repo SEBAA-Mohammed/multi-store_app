@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tel')->nullable();
             $table->string('adresse')->nullable();
             $table->text('header')->nullable();
-            $table->foreignId('store_categorie_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('store_category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
