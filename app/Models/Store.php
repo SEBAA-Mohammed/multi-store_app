@@ -38,7 +38,7 @@ class Store extends Model implements HasCurrentTenantLabel
         return $this->belongsToMany(User::class);
     }
 
-    public function store_categorie(): BelongsTo
+    public function storeCategorie(): BelongsTo
     {
         return $this->belongsTo(StoreCategorie::class);
     }

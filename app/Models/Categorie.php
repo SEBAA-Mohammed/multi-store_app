@@ -16,7 +16,7 @@ class Categorie extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function store_categorie(): BelongsTo
+    public function storeCategorie(): BelongsTo
     {
         return $this->belongsTo(StoreCategorie::class);
     }

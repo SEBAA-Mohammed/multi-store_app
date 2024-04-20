@@ -11,12 +11,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function order_details(): HasMany
+    public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function product_images(): HasMany
+    public function productImages(): HasMany
     {
         return $this->hasMany(ProductImages::class);
     }
