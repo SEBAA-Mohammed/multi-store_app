@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->timestamp('datetime_order');
+            $table->boolean('payed');
             $table->string('adresse_livraison');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('status_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('status_id')->constrained('status')->cascadeOnDelete();
             $table->timestamps();
         });
     }
