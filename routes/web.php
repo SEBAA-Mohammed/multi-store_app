@@ -19,7 +19,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Products');
+    return Inertia::render('Index');
 });
 
 Route::get('/dashboard', function () {
