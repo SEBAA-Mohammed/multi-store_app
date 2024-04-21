@@ -1,3 +1,4 @@
+import { Footer } from '@/Components/Footer';
 import { Head } from '@inertiajs/react';
 import { PropsWithChildren } from 'react';
 
@@ -19,6 +20,7 @@ export default function MainLayout({ title, children }: PropsWithChildren<{ titl
       <main className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         {children}
       </main>
+      <Footer />
     </div>
   );
 }
