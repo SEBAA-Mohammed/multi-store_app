@@ -17,8 +17,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'nom' => 'Test Admin 1',
-            'prenom' => 'prenom',
+            'name' => 'Test Admin 1',
             'adresse' => 'adresse example ...',
             'ville' => 'fes',
             'tel' => '+212 762 416 046',
@@ -29,8 +28,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'nom' => 'Test Admin 2',
-            'prenom' => 'prenom',
+            'name' => 'Test Admin 2',
             'adresse' => 'adresse example ...',
             'ville' => 'fes',
             'tel' => '+212 762 416 046',
@@ -41,8 +39,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'nom' => 'Manager',
-            'prenom' => 'prenom',
+            'name' => 'Manager',
             'adresse' => 'adresse example ...',
             'ville' => 'fes',
             'tel' => '+212 762 416 046',
