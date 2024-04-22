@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class BrandSeeder extends Seeder
             DB::table('brands')->insert([
                 'name' => $faker->company,
                 'image_url' => $faker->imageUrl(),
-
+                'store_id' => Store::where('slug', 'store-1')->first()->id,
             ]);
         }
     }
