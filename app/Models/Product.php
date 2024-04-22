@@ -19,7 +19,7 @@ class Product extends Model
         'description',
         'stock',
         'rating',
-        'categorie_id',
+        'category_id',
         'brand_id',
         'unit_id',
         'store_id'

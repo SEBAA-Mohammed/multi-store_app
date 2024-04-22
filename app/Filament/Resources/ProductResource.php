@@ -23,16 +23,20 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('category.name')
+                Forms\Components\Select::make('category_id')
+                    ->label('Category')
                     ->relationship('category', 'name')
                     ->required(),
-                Forms\Components\Select::make('brand.name')
+                Forms\Components\Select::make('brand_id')
+                    ->label('Brand')
                     ->relationship('brand', 'name')
                     ->required(),
-                Forms\Components\Select::make('unit.name')
+                Forms\Components\Select::make('unit_id')
+                    ->label('Unit')
                     ->relationship('unit', 'name')
                     ->required(),
-                Forms\Components\Select::make('store.name')
+                Forms\Components\Select::make('store_id')
+                    ->label('Store')
                     ->relationship('store', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('codebarre')
