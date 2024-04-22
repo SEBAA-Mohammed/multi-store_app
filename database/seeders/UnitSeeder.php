@@ -18,7 +18,7 @@ class UnitSeeder extends Seeder
 
         foreach (range(1, 3) as $index) {
             DB::table('units')->insert([
-                'nom' => $faker->word,
+                'name' => $faker->word,
             ]);
         }
     }

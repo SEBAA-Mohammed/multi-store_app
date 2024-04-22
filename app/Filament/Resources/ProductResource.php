@@ -3,71 +3,57 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\Pages\CreateProduct;
-use App\Filament\Resources\ProductResource\Pages\EditProduct;
-use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
 {
-    // protected static ?string $model = Product::class;
+    protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('codebarre')
+                Forms\Components\Select::make('category.name')
+                    ->relationship('category', 'name')
+                    ->required(),
+                Forms\Components\Select::make('brand.name')
+                    ->relationship('brand', 'name')
+                    ->required(),
+                Forms\Components\Select::make('unit.name')
+                    ->relationship('unit', 'name')
+                    ->required(),
+                Forms\Components\Select::make('store.name')
+                    ->relationship('store', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('codebarre')
+                    ->required(),
+                Forms\Components\TextInput::make('designation')
+                    ->required(),
+                Forms\Components\TextInput::make('prix_ht')
                     ->required()
-                    ->integer()
-                    ->minValue(1),
-                TextInput::make('nom')
+                    ->numeric(),
+                Forms\Components\TextInput::make('tva')
                     ->required()
-                    ->maxLength(255),
-                TextInput::make('prix_ht')
+                    ->numeric(),
+                Forms\Components\Textarea::make('description')
                     ->required()
-                    ->numeric()
-                    ->minValue(1),
-                TextInput::make('tva')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('stock')
                     ->required()
-                    ->numeric()
-                    ->minValue(0.00)
-                    ->maxValue(0.85)
-                    ->step(0.01),
-                TextInput::make('quantite')
+                    ->numeric(),
+                Forms\Components\TextInput::make('rating')
                     ->required()
-                    ->integer()
-                    ->minValue(1),
-                RichEditor::make('description')
-                    ->required()
-                    ->toolbarButtons([
-                        'blockquote',
-                        'bold',
-                        'bulletList',
-                        'italic',
-                        'link',
-                        'orderedList',
-                        'redo',
-                        'strike',
-                        'underline',
-                        'undo',
-                    ]),
+                    ->numeric(),
             ]);
     }
 
@@ -75,40 +61,46 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('codebarre')
+                Tables\Columns\TextColumn::make('designation')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('prix_ht')
                     ->numeric()
-                    ->searchable()
                     ->sortable(),
-                TextColumn::make('nom')
-                    ->searchable()
+                Tables\Columns\TextColumn::make('tva')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('prix_ht')
+                Tables\Columns\TextColumn::make('stock')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
                     ->numeric(),
-                TextColumn::make('tva')
+                Tables\Columns\TextColumn::make('brand.name')
                     ->numeric(),
-                TextColumn::make('quantite')
+                Tables\Columns\TextColumn::make('unit.name')
                     ->numeric(),
-                TextColumn::make('description')
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('rating')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -123,9 +115,10 @@ class ProductResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListProducts::route('/'),
-            'create' => CreateProduct::route('/create'),
-            // 'edit' => EditProduct::route('/{record}/edit'),
+            'index' => Pages\ListProducts::route('/'),
+            'create' => Pages\CreateProduct::route('/create'),
+            'view' => Pages\ViewProduct::route('/{record}'),
+            'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
 }

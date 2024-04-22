@@ -18,7 +18,7 @@ class StoreCategorySeeder extends Seeder
 
         foreach (range(1, 3) as $index) {
             DB::table('store_categories')->insert([
-                'nom' => $faker->word,
+                'name' => $faker->word,
             ]);
         }
     }

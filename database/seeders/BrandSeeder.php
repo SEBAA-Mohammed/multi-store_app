@@ -18,7 +18,7 @@ class BrandSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('brands')->insert([
-                'nom' => $faker->company,
+                'name' => $faker->company,
                 'image_url' => $faker->imageUrl(),
 
             ]);

@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('categories')->insert([
-                'nom' => $faker->word,
+                'name' => $faker->word,
                 'image_url' => $faker->imageUrl(),
                 'store_category_id' => $faker->numberBetween(1, 3),
             ]);
