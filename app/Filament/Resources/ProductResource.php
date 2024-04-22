@@ -35,10 +35,6 @@ class ProductResource extends Resource
                     ->label('Unit')
                     ->relationship('unit', 'name')
                     ->required(),
-                Forms\Components\Select::make('store_id')
-                    ->label('Store')
-                    ->relationship('store', 'name')
-                    ->required(),
                 Forms\Components\TextInput::make('codebarre')
                     ->required(),
                 Forms\Components\TextInput::make('designation')
