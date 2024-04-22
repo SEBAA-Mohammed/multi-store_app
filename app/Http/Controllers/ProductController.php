@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\StoreResource;
 use App\Models\Store;
 use App\Models\User;
 
@@ -13,7 +14,6 @@ class ProductController extends Controller
      */
     public function index(User $user, Store $store)
     {
-        $products = $store->products()->with('brand', 'category')->get();
-        return ProductResource::collection($products);
+        return inertia('Home/Index');
     }
 }

@@ -1,7 +1,9 @@
 import MainLayout from '@/Layouts/MainLayout';
+import { PageProps } from '@/types';
+import { usePage } from '@inertiajs/react';
 
-export default function Index({ products }) {
-  console.log(products);
+export default function Index() {
+  const { store } = usePage<PageProps>().props.current;
 
   return (
     <MainLayout title="Home">
