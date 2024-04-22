@@ -18,7 +18,7 @@ class StatusSeeder extends Seeder
 
         foreach (range(1, 3) as $index) {
             DB::table('status')->insert([
-                'nom' => $faker->word,
+                'name' => $faker->word,
             ]);
         }
     }

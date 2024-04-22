@@ -10,6 +10,10 @@ class StoreCategory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function stores(): HasMany
     {
         return $this->hasMany(Store::class);

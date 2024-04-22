@@ -11,6 +11,21 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'codebarre',
+        'designation',
+        'prix_ht',
+        'tva',
+        'description',
+        'stock',
+        'rating',
+        'categorie_id',
+        'brand_id',
+        'unit_id',
+        'store_id'
+    ];
+
+
     public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Store extends Model implements HasCurrentTenantLabel
 {
     use HasFactory;
+
     protected $keyType = 'string';
 
     public $incrementing = false;
