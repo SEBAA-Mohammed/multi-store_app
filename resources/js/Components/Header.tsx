@@ -1,9 +1,12 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
 import { Container } from '@/Components/ui/container';
-import { MainNav } from '@/Components/MainNav';
+import { NavigationBar } from '@/Components/NavigationBar';
+import { PageProps } from '@/types';
 
-export function NavBar() {
+export function Header() {
+  const { categories } = usePage<PageProps>().props.current;
+
   return (
     <header className="border-b">
       <Container>
@@ -12,7 +15,7 @@ export function NavBar() {
             <p className="font-bold text-xl">STORE</p>
           </Link>
         </div>
-        <MainNav data={[]} />
+        <NavigationBar data={categories} />
       </Container>
     </header>
   );

@@ -2,7 +2,7 @@ import { Head } from '@inertiajs/react';
 import { PropsWithChildren } from 'react';
 
 import { Footer } from '@/Components/Footer';
-import { NavBar } from '@/Components/NavBar';
+import { Header } from '@/Components/Header';
 
 // import ApplicationLogo from '@/Components/ApplicationLogo';
 
@@ -20,7 +20,7 @@ export default function MainLayout({ title, children }: PropsWithChildren<{ titl
         <title>{title ? `${title}` : 'My Store'}</title>
       </Head>
 
-      <NavBar />
+      <Header />
 
       <main className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         {children}

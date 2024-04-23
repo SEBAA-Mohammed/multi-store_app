@@ -17,11 +17,18 @@ export interface Store {
   header: string;
 }
 
+export interface Category {
+  id: number;
+  name: string;
+  image_url: string;
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
   auth: {
     user: User;
   };
   current: {
     store: Store;
+    categories: Category[];
   };
 };
