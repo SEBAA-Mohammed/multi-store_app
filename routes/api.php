@@ -15,5 +15,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 Route::scopeBindings()->group(function () {
-    Route::get('/{user:username}/{store:slug}', [ProductController::class, 'index']);
+    Route::get('/{user:username}/{store:slug}', ProductController::class);
 });

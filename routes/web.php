@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::scopeBindings()->prefix('/{user:username}/{store:slug}')->group(function () {
-    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/', ProductController::class);
     Route::get('/cart', CartController::class);
 });
 

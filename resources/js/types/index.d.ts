@@ -23,6 +23,21 @@ export interface Category {
   image_url: string;
 }
 
+export interface Product {
+  id: number;
+  codebarre: string;
+  designation: string;
+  prix_ht: number;
+  tva: number;
+  description: string;
+  stock: number;
+  rating: number;
+  // category: CategoryResource | null;
+  // brand: BrandResource | null;
+  // unit: UnitResource | null;
+  // store: StoreResource | null;
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
   auth: {
     user: User;
