@@ -5,5 +5,5 @@ interface ContainerProps {
 }
 
 export const Container: FC<ContainerProps> = ({ children }) => {
-  return <div className="mx-auto max-w-7xl flex">{children}</div>;
+  return <div className="mx-auto max-w-7xl">{children}</div>;
 };
