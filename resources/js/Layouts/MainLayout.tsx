@@ -22,9 +22,8 @@ export default function MainLayout({ title, children }: PropsWithChildren<{ titl
 
       <Header />
 
-      <main className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-        {children}
-      </main>
+      {/* <main className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"> */}
+      <main>{children}</main>
       <Footer />
     </div>
   );
