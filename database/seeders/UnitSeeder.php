@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -19,6 +20,8 @@ class UnitSeeder extends Seeder
         foreach (range(1, 3) as $index) {
             DB::table('units')->insert([
                 'name' => $faker->word,
+                'store_id' => Store::where('slug', 'store-1')->first()->id,
+
             ]);
         }
     }
