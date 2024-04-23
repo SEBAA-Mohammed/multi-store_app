@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { Container } from '@/Components/ui/container';
 import { NavigationBar } from '@/Components/NavigationBar';
 import { PageProps } from '@/types';
+import { NavbarActions } from '@/Components/NavbarActions';
 
 export function Header() {
   const { categories } = usePage<PageProps>().props.current;
@@ -16,6 +17,7 @@ export function Header() {
           </Link>
         </div>
         <NavigationBar data={categories} />
+        <NavbarActions />
       </Container>
     </header>
   );
