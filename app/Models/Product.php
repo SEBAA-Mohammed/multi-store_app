@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'codebarre',
+        'barcode',
         'designation',
         'prix_ht',
         'tva',

@@ -25,7 +25,7 @@ export interface Category {
 
 export interface Product {
   id: number;
-  codebarre: string;
+  barcode: string;
   designation: string;
   prix_ht: number;
   tva: number;

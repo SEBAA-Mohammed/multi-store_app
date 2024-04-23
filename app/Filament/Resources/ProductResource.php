@@ -35,7 +35,7 @@ class ProductResource extends Resource
                     ->label('Unit')
                     ->relationship('unit', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('codebarre')
+                Forms\Components\TextInput::make('barcode')
                     ->required(),
                 Forms\Components\TextInput::make('designation')
                     ->required(),
