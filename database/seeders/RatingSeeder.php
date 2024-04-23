@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Store;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -21,6 +22,8 @@ class RatingSeeder extends Seeder
                 'note' => $faker->randomFloat(2, 1, 100),
                 'user_id' => $faker->numberBetween(1, 3),
                 'product_id' => $faker->numberBetween(1, 3),
+                'store_id' => Store::where('slug', 'store-1')->first()->id,
+
             ]);
         }
     }

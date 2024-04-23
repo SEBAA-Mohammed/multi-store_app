@@ -24,7 +24,8 @@ class OrderSeeder extends Seeder
                 'adresse_livraison' => $faker->text(),
                 'payment_method_id' => $faker->numberBetween(1, 3),
                 'user_id' => $faker->numberBetween(1, 3),
-                'status_id' => $faker->numberBetween(1, 3), 'store_id' => Store::where('slug', 'store-1')->first()->id,
+                'status_id' => $faker->numberBetween(1, 3),
+                'store_id' => Store::where('slug', 'store-1')->first()->id,
             ]);
         }
     }
