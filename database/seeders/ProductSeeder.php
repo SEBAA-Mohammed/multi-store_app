@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
 
         Product::insert([
             [
-                'codebarre' => '123456789',
+                'barcode' => '123456789',
                 'designation' => 'Product 1',
                 'prix_ht' => 10.99,
                 'tva' => 0.10,
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '987654321',
+                'barcode' => '987654321',
                 'designation' => 'Product 2',
                 'prix_ht' => 19.99,
                 'tva' => 0.10,
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '456789123',
+                'barcode' => '456789123',
                 'designation' => 'Product 3',
                 'prix_ht' => 15.50,
                 'tva' => 0.10,
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '789123456',
+                'barcode' => '789123456',
                 'designation' => 'Product 4',
                 'prix_ht' => 25.75,
                 'tva' => 0.20,
@@ -80,7 +80,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '654321987',
+                'barcode' => '654321987',
                 'designation' => 'Product 5',
                 'prix_ht' => 8.25,
                 'tva' => 0.20,
@@ -95,7 +95,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '111111111',
+                'barcode' => '111111111',
                 'designation' => 'Product 6',
                 'prix_ht' => 12.99,
                 'tva' => 0.10,
@@ -110,7 +110,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '222222222',
+                'barcode' => '222222222',
                 'designation' => 'Product 7',
                 'prix_ht' => 9.75,
                 'tva' => 0.10,
@@ -125,7 +125,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'codebarre' => '333333333',
+                'barcode' => '333333333',
                 'designation' => 'Product 8',
                 'prix_ht' => 17.50,
                 'tva' => 0.10,
