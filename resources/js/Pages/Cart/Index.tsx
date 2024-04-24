@@ -1,7 +1,9 @@
+import { MainLayout } from '@/Layouts/MainLayout';
+
 export default function Index() {
   return (
-    <div className="">
-      <h1>Index</h1>
-    </div>
+    <MainLayout title="Cart">
+      <div className="space-y-10 pb-10">CART PAGE</div>
+    </MainLayout>
   );
 }
