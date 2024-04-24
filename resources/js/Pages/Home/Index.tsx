@@ -1,6 +1,6 @@
 import { Billboard } from '@/Components/Billboard';
 import { ProductList } from '@/Components/ProductList';
-import MainLayout from '@/Layouts/MainLayout';
+import { MainLayout } from '@/Layouts/MainLayout';
 import { Product } from '@/types';
 
 interface HomeProps {
