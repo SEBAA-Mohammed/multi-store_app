@@ -16,8 +16,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::scopeBindings()->prefix('/{user:username}/{store:slug}')->group(function () {
-    Route::get('/', ProductController::class);
-    Route::get('/cart', CartController::class);
+    Route::get('/', ProductController::class)->name('home');
+    Route::get('/cart', CartController::class)->name('cart');
 });
 
 require __DIR__ . '/auth.php';
