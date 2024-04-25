@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
+use Filament\Actions\CreateAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,6 +13,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
 
 class OrderResource extends Resource
 {
@@ -31,21 +34,24 @@ class OrderResource extends Resource
             ]);
     }
 
+
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('datetime_order')
+                Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('datetime_order')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('paid')
-                    ->numeric(),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('adresse_livraison')
-                    ->numeric(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('status.name')
-                    ->numeric(),
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -62,6 +68,20 @@ class OrderResource extends Resource
             ]);
     }
 
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Infolists\Components\TextEntry::make('user.name'),
+                Infolists\Components\TextEntry::make('datetime_order'),
+                Infolists\Components\TextEntry::make('paid'),
+                Infolists\Components\TextEntry::make('adresse_livraison'),
+                Infolists\Components\TextEntry::make('status.name'),
+            ]);
+    }
+
+
     public static function getRelations(): array
     {
         return [
@@ -73,8 +93,8 @@ class OrderResource extends Resource
     {
         return [
             'index' => Pages\ListOrders::route('/'),
-            'create' => Pages\CreateOrder::route('/create'),
-            'view' => Pages\ViewOrder::route('/{record}'),
+            // 'create' => Pages\CreateOrder::route('/create'),
+            // 'view' => Pages\ViewOrder::route('/{record}'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }
