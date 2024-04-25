@@ -6,16 +6,16 @@ import { PageProps } from '@/types';
 import { NavbarActions } from '@/Components/NavbarActions';
 
 export function Header() {
-  const { categories } = usePage<PageProps>().props.current;
+  const { current, routes } = usePage<PageProps>().props;
 
   return (
     <header className="border-b">
       <Container>
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
-          <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+          <Link href={route('home', routes.home)} className="ml-4 flex lg:ml-0 gap-x-2">
             <p className="font-bold text-xl">STORE</p>
           </Link>
-          <NavigationBar data={categories} />
+          <NavigationBar data={current.categories} />
           <NavbarActions />
         </div>
       </Container>

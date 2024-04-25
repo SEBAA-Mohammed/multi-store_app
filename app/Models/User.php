@@ -34,10 +34,8 @@ class User extends Authenticatable implements HasTenants, FilamentUser
         'email',
         'tel',
         'role',
-        'user_type',
         'password'
     ];
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -58,6 +56,11 @@ class User extends Authenticatable implements HasTenants, FilamentUser
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 
     public function stores(): BelongsToMany
     {

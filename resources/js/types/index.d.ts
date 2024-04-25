@@ -1,6 +1,7 @@
 export interface User {
   id: number;
   name: string;
+  username: string;
   email: string;
   email_verified_at: string;
 }
@@ -45,5 +46,11 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
   current: {
     store: Store;
     categories: Category[];
+  };
+  routes: {
+    home: {
+      user: User['username'];
+      store: Store['slug'];
+    };
   };
 };
