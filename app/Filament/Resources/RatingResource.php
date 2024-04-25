@@ -19,6 +19,11 @@ class RatingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
+    protected static ?string $navigationGroup = 'Sells Management';
+
+    protected static ?int $navigationSort = 2;
+
+
     public static function form(Form $form): Form
     {
         return $form

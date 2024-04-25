@@ -19,6 +19,10 @@ class BrandResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-bangladeshi';
 
+    protected static ?string $navigationGroup = 'Products Management';
+
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
