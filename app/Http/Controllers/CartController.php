@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Store;
+use App\Models\User;
 use Inertia\Inertia;
 
 class CartController extends Controller
@@ -10,8 +11,8 @@ class CartController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(User $user, Store $store)
     {
-        Inertia::render('Cart/Index');
+        return inertia('Cart');
     }
 }

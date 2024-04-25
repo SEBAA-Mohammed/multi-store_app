@@ -25,13 +25,12 @@ class Product extends Model
         'store_id'
     ];
 
-
     public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function productImages(): HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
     }

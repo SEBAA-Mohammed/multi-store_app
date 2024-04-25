@@ -31,6 +31,7 @@ class HandleInertiaRequests extends Middleware
     {
         $user = $request->route('user');
         $store = $request->route('store');
+        // $product = $request->route('product');
 
         return [
             ...parent::share($request),
@@ -45,6 +46,9 @@ class HandleInertiaRequests extends Middleware
                 'home' => [
                     'user' =>  $user ? $user->username : null,
                     'store' => $store ? $store->slug : null
+                ],
+                'products' => [
+                    'product' =>  $request?->route('product')
                 ],
             ],
         ];
