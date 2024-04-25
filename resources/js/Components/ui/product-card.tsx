@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 import { router, usePage } from '@inertiajs/react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
-import Currency from '@/Components/ui/currency';
+import { Currency } from '@/Components/ui/currency';
 import IconButton from '@/Components/ui/icon-button';
 // import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
@@ -14,6 +14,8 @@ interface ProductCard {
 
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const { auth, current } = usePage<PageProps>().props;
+
+  console.log(data);
 
   // const previewModal = usePreviewModal();
   // const cart = useCart();
@@ -46,11 +48,11 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
     >
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
-        {/* <img
-          src={data.images?.[0]?.url}
+        <img
+          src={data.images?.[0]?.image_url}
           alt=""
-          className="aspect-square object-cover rounded-md"
-        /> */}
+          className="aspect-square object-cover rounded-md h-full w-full"
+        />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton onClick={onPreview} icon={<Expand size={20} className="text-gray-600" />} />
@@ -64,10 +66,7 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
       {/* Description */}
       <div>
         <p className="font-semibold text-lg">{data.designation}</p>
-        <p className="text-sm text-gray-500">
-          Category name
-          {/* {data.category?.name} */}
-        </p>
+        <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
       {/* Price & Reiew */}
       <div className="flex items-center justify-between">

@@ -34,7 +34,7 @@ export interface Product {
   stock: number;
   rating: number;
   images?: ProductImage[];
-  // category?: CategoryResource;
+  category?: Category;
   // brand?: BrandResource;
   // unit?: UnitResource;
   // store?: StoreResource;

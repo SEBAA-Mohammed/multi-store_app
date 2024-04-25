@@ -14,11 +14,7 @@ class HomeController extends Controller
     public function __invoke(User $user, Store $store)
     {
         return inertia('Home', [
-            'products' => ProductResource::collection($store->products)
+            'products' => ProductResource::collection($store->products->load(['images', 'category']))
         ]);
-
-        // return response()->json([
-        //     'products' => ProductResource::collection($store->products)
-        // ]);
     }
 }

@@ -1,11 +1,10 @@
-import { formatter } from '@/lib/utils';
+import { cn, formatter } from '@/lib/utils';
 
 interface CurrencyProps {
   value?: string | number;
+  className?: string | string[];
 }
 
-const Currency: React.FC<CurrencyProps> = ({ value = 0 }) => {
-  return <div className="font-semibold">{formatter.format(Number(value))}</div>;
+export const Currency: React.FC<CurrencyProps> = ({ value = 0, className }) => {
+  return <p className={cn('font-semibold', className)}>{formatter.format(Number(value))}</p>;
 };
-
-export default Currency;

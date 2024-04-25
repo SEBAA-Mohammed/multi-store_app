@@ -13,7 +13,11 @@ export const GalleryTab: React.FC<GalleryTabProps> = ({ image }) => {
       {({ selected }) => (
         <div>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounded-md">
-            <img src={image.image_url} alt="" className="object-cover object-center" />
+            <img
+              src={image.image_url}
+              alt=""
+              className="h-full w-full object-cover object-center"
+            />
           </span>
           <span
             className={cn(
