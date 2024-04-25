@@ -1,11 +1,11 @@
 import { ProductList } from '@/Components/ProductList';
 import { Container } from '@/Components/ui/container';
 import { MainLayout } from '@/Layouts/MainLayout';
-import { Product as ProductType } from '@/types';
+import { Product as IProduct } from '@/types';
 
 interface ProductProps {
-  product: ProductType;
-  suggestedProducts: ProductType[];
+  product: IProduct;
+  suggestedProducts: IProduct[];
 }
 
 export default function Product({ product, suggestedProducts }: ProductProps) {
