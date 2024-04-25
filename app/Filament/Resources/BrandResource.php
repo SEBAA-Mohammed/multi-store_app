@@ -12,12 +12,17 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
 
 class BrandResource extends Resource
 {
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-bangladeshi';
+
+    protected static ?string $navigationGroup = 'Products Management';
+
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -37,7 +42,9 @@ class BrandResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image_url'),
+                Tables\Columns\ImageColumn::make('image_url')
+                    ->label('Image'),
+                Tables\Columns\TextColumn::make('products_count')->counts('products'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

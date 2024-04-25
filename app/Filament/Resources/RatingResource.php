@@ -19,23 +19,33 @@ class RatingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
-    public static function form(Form $form): Form
+    protected static ?string $navigationGroup = 'Sells Management';
+
+    protected static ?int $navigationSort = 2;
+
+
+    // public static function form(Form $form): Form
+    // {
+    //     return $form
+    //         ->schema([
+    //             Forms\Components\Select::make('user_id')
+    //                 ->relationship('user', 'name')
+    //                 ->required(),
+    //             Forms\Components\Select::make('product_id')
+    //                 ->relationship('product', 'id')
+    //                 ->required(),
+    //             Forms\Components\Select::make('store_id')
+    //                 ->relationship('store', 'name')
+    //                 ->required(),
+    //             Forms\Components\TextInput::make('note')
+    //                 ->required()
+    //                 ->numeric(),
+    //         ]);
+    // }
+
+    public static function canCreate(): bool
     {
-        return $form
-            ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\Select::make('product_id')
-                    ->relationship('product', 'id')
-                    ->required(),
-                Forms\Components\Select::make('store_id')
-                    ->relationship('store', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('note')
-                    ->required()
-                    ->numeric(),
-            ]);
+        return false;
     }
 
     public static function table(Table $table): Table
@@ -62,7 +72,7 @@ class RatingResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\DeleteAction::make(),
 
             ])
@@ -85,7 +95,7 @@ class RatingResource extends Resource
         return [
             'index' => Pages\ListRatings::route('/'),
             // 'create' => Pages\CreateRating::route('/create'),
-            'view' => Pages\ViewRating::route('/{record}'),
+            // 'view' => Pages\ViewRating::route('/{record}'),
             // 'edit' => Pages\EditRating::route('/{record}/edit'),
         ];
     }

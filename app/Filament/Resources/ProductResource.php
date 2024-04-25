@@ -19,6 +19,11 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
+    protected static ?string $navigationGroup = 'Products Management';
+
+    protected static ?int $navigationSort = 1;
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -105,6 +110,8 @@ class ProductResource extends Resource
             ]);
     }
 
+
+
     public static function getRelations(): array
     {
         return [
@@ -117,7 +124,7 @@ class ProductResource extends Resource
         return [
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
-            'view' => Pages\ViewProduct::route('/{record}'),
+            // 'view' => Pages\ViewProduct::route('/{record}'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
