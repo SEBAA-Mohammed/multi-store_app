@@ -37,14 +37,14 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $user,
             ],
-            'current' => [
+            'current' => $store ? [
                 'store' => $store,
                 'categories' => $store->storeCategory->categories ?? []
-            ],
+            ] : null,
             'routes' => [
                 'home' => [
-                    'user' => $user->username,
-                    'store' => $store->slug
+                    'user' =>  $user ? $user->username : null,
+                    'store' => $store ? $store->slug : null
                 ],
             ],
         ];
