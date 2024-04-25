@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -30,16 +29,23 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $store = $request->route()->parameter('store');
+        $user = $request->route('user');
+        $store = $request->route('store');
 
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->route('user'),
+                'user' => $user,
             ],
             'current' => [
                 'store' => $store,
                 'categories' => $store->storeCategory->categories ?? []
+            ],
+            'routes' => [
+                'home' => [
+                    'user' => $user->username,
+                    'store' => $store->slug
+                ],
             ],
         ];
     }
