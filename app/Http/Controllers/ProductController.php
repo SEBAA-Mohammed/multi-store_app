@@ -23,9 +23,10 @@ class ProductController extends Controller
             ->where('id', '!=', $product->id)
             ->get();
 
+        // dd($product->with('images')->get());
         return inertia('Product', [
-            'product' => $product,
-            'suggestedProducts' => ProductResource::collection($suggestedProducts)
+            'product' => new ProductResource($product->load('images')),
+            'suggestedProducts' => ProductResource::collection($suggestedProducts->load('images'))
         ]);
 
         // return response()->json([

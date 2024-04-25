@@ -33,10 +33,16 @@ export interface Product {
   description: string;
   stock: number;
   rating: number;
-  // category: CategoryResource | null;
-  // brand: BrandResource | null;
-  // unit: UnitResource | null;
-  // store: StoreResource | null;
+  images?: ProductImage[];
+  // category?: CategoryResource;
+  // brand?: BrandResource;
+  // unit?: UnitResource;
+  // store?: StoreResource;
+}
+
+export interface ProductImage {
+  id: number;
+  image_url: string;
 }
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {

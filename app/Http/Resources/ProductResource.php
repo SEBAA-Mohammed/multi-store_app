@@ -23,6 +23,7 @@ class ProductResource extends JsonResource
             'description' => $this->description,
             'stock' => $this->stock,
             'rating' => $this->rating,
+            'images' => ProductImageResource::collection($this->whenLoaded('images')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'brand' => new BrandResource($this->whenLoaded('brand')),
             'unit' => new UnitResource($this->whenLoaded('unit')),
