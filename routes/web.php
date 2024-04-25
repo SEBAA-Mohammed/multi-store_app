@@ -20,11 +20,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::scopeBindings()->prefix('/{user:username}/{store:slug}')->group(function () {
-    Route::get('', HomeController::class)->name('home');
+    Route::get('/', HomeController::class)->name('home');
 
-    Route::get('product/{product}', ProductController::class)->name('product');
+    Route::get('/product/{product}', ProductController::class)->name('product');
 
-    Route::get('cart', CartController::class)->name('cart');
+    Route::get('/cart', CartController::class)->name('cart');
 });
 
 require __DIR__ . '/auth.php';

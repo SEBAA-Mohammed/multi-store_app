@@ -1,24 +1,23 @@
 import { MouseEventHandler } from 'react';
+import { router, usePage } from '@inertiajs/react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 import Currency from '@/Components/ui/currency';
 import IconButton from '@/Components/ui/icon-button';
 // import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
-import { Product } from '@/types';
+import { PageProps, Product } from '@/types';
 
 interface ProductCard {
   data: Product;
 }
 
-const ProductCard: React.FC<ProductCard> = ({ data }) => {
+export const ProductCard: React.FC<ProductCard> = ({ data }) => {
+  const { auth, current } = usePage<PageProps>().props;
+
   // const previewModal = usePreviewModal();
   // const cart = useCart();
   // const router = useRouter();
-
-  const handleClick = () => {
-    // router.push(`/product/${data?.id}`);
-  };
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
@@ -34,7 +33,15 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
   return (
     <div
-      onClick={handleClick}
+      onClick={() =>
+        router.visit(
+          route('product', {
+            user: auth.user.username,
+            store: current.store.slug,
+            product: data.id,
+          }),
+        )
+      }
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
     >
       {/* Image & actions */}
@@ -69,5 +76,3 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
     </div>
   );
 };
-
-export default ProductCard;
