@@ -1,4 +1,6 @@
 import { useEffect, FormEventHandler } from 'react';
+import { route } from 'ziggy-js';
+
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';

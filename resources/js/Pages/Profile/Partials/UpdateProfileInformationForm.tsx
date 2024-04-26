@@ -1,10 +1,12 @@
+import { FormEventHandler } from 'react';
+import { Link, useForm, usePage } from '@inertiajs/react';
+import { Transition } from '@headlessui/react';
+import { route } from 'ziggy-js';
+
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Link, useForm, usePage } from '@inertiajs/react';
-import { Transition } from '@headlessui/react';
-import { FormEventHandler } from 'react';
 import { PageProps } from '@/types';
 
 export default function UpdateProfileInformation({

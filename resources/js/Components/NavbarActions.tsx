@@ -1,3 +1,4 @@
+import { route } from 'ziggy-js';
 import { router } from '@inertiajs/react';
 import { ShoppingBag } from 'lucide-react';
 

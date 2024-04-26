@@ -1,20 +1,19 @@
 import { MouseEventHandler } from 'react';
-import { router, usePage } from '@inertiajs/react';
+import { route } from 'ziggy-js';
+import { router } from '@inertiajs/react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 import { Currency } from '@/Components/ui/currency';
 import IconButton from '@/Components/ui/icon-button';
 // import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
-import { PageProps, Product } from '@/types';
+import { Product } from '@/types';
 
 interface ProductCard {
   data: Product;
 }
 
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
-  const { auth, current } = usePage<PageProps>().props;
-
   // const previewModal = usePreviewModal();
   // const cart = useCart();
   // const router = useRouter();

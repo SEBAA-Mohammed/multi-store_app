@@ -1,4 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
+import { route } from 'ziggy-js';
 
 import { Container } from '@/Components/ui/container';
 import { NavigationBar } from '@/Components/NavigationBar';
