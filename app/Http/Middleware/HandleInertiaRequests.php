@@ -29,9 +29,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $user = $request->route('user');
         $store = $request->route('store');
-        // $product = $request->route('product');
 
         return [
             ...parent::share($request),
