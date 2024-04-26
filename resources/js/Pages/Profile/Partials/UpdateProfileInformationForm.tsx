@@ -1,5 +1,5 @@
 import { FormEventHandler } from 'react';
-import { Link, useForm, usePage } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 import { route } from 'ziggy-js';
 
@@ -7,7 +7,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { PageProps } from '@/types';
+import { useTypedPage } from '@/Hooks/typed-page';
 
 export default function UpdateProfileInformation({
   mustVerifyEmail,
@@ -18,7 +18,7 @@ export default function UpdateProfileInformation({
   status?: string;
   className?: string;
 }) {
-  const user = usePage<PageProps>().props.auth.user;
+  const { user } = useTypedPage().auth;
 
   const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
     name: user.name,

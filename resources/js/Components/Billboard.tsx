@@ -1,9 +1,7 @@
-import { usePage } from '@inertiajs/react';
-
-import { PageProps } from '@/types';
+import { useTypedPage } from '@/Hooks/typed-page';
 
 export function Billboard() {
-  const { store } = usePage<PageProps>().props.current;
+  const { store } = useTypedPage().current;
   return (
     <div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden">
       <div

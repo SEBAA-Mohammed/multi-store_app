@@ -1,13 +1,13 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
 import { Container } from '@/Components/ui/container';
 import { NavigationBar } from '@/Components/NavigationBar';
-import { PageProps } from '@/types';
 import { NavbarActions } from '@/Components/NavbarActions';
+import { useTypedPage } from '@/Hooks/typed-page';
 
 export function Header() {
-  const { current } = usePage<PageProps>().props;
+  const { current } = useTypedPage();
 
   return (
     <header className="border-b">
