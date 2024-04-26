@@ -21,7 +21,7 @@ export interface Store {
 export interface Category {
   id: number;
   name: string;
-  image_url: string;
+  url: string;
 }
 
 export interface Product {
@@ -42,7 +42,7 @@ export interface Product {
 
 export interface ProductImage {
   id: number;
-  image_url: string;
+  url: string;
 }
 
 // export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {

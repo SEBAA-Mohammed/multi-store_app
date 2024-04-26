@@ -38,7 +38,7 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <img
-          src={data.images?.[0]?.image_url}
+          src={data.images?.[0]?.url}
           alt=""
           className="aspect-square object-cover rounded-md h-full w-full"
         />

@@ -12,7 +12,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::scopeBindings()->prefix('/{user:username}/{store:slug}')->group(function () {
+Route::scopeBindings()->prefix('/{user}/{store}')->group(function () {
     Route::get('/', HomeController::class)->name('home');
 
     Route::get('/product/{product}', ProductController::class)->name('product');
