@@ -21,27 +21,7 @@ class RatingResource extends Resource
 
     protected static ?string $navigationGroup = 'Sells Management';
 
-    protected static ?int $navigationSort = 2;
-
-
-    // public static function form(Form $form): Form
-    // {
-    //     return $form
-    //         ->schema([
-    //             Forms\Components\Select::make('user_id')
-    //                 ->relationship('user', 'name')
-    //                 ->required(),
-    //             Forms\Components\Select::make('product_id')
-    //                 ->relationship('product', 'id')
-    //                 ->required(),
-    //             Forms\Components\Select::make('store_id')
-    //                 ->relationship('store', 'name')
-    //                 ->required(),
-    //             Forms\Components\TextInput::make('note')
-    //                 ->required()
-    //                 ->numeric(),
-    //         ]);
-    // }
+    protected static ?int $navigationSort = 5;
 
     public static function canCreate(): bool
     {
