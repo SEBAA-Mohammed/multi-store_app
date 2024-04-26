@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             DB::table('orders')->insert([
                 'datetime_order' => $faker->dateTime(),
-                'paid' => $faker->boolean,
+                'is_paid' => $faker->boolean,
                 'adresse_livraison' => $faker->text(),
                 'payment_method_id' => $faker->numberBetween(1, 3),
                 'user_id' => $faker->numberBetween(1, 3),

@@ -45,8 +45,9 @@ class OrderResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('datetime_order')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('paid')
-                    ->sortable(),
+                Tables\Columns\IconColumn::make('is_paid')
+                    ->boolean()
+                    ->label('Paid'),
                 Tables\Columns\TextColumn::make('adresse_livraison')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -75,7 +76,7 @@ class OrderResource extends Resource
             ->schema([
                 Infolists\Components\TextEntry::make('user.name'),
                 Infolists\Components\TextEntry::make('datetime_order'),
-                Infolists\Components\TextEntry::make('paid'),
+                Infolists\Components\TextEntry::make('is_paid'),
                 Infolists\Components\TextEntry::make('adresse_livraison'),
                 Infolists\Components\TextEntry::make('status.name'),
             ]);
