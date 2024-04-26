@@ -11,8 +11,6 @@ interface ProductProps {
 }
 
 export default function Product({ product, suggestedProducts }: ProductProps) {
-  console.log(suggestedProducts);
-
   return (
     <div className="bg-white">
       <Container>

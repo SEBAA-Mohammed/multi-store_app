@@ -1,4 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
+import { route } from 'ziggy-js';
+
 import { PageProps } from '@/types';
 
 export default function Welcome({

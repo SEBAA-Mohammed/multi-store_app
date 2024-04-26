@@ -18,7 +18,7 @@ class ProductImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'image_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
+            'url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
             'product_id' => Product::inRandomOrder()->first()->id,
         ];
     }

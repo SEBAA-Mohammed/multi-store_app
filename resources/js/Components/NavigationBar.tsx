@@ -1,4 +1,4 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { FC } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -9,7 +9,7 @@ interface MainNav {
 }
 
 export const NavigationBar: FC<MainNav> = ({ data }) => {
-  const { url } = usePage();
+  const url = '';
 
   const routes = data.map(({ id, name }) => ({
     href: `/category/${id}`,

@@ -1,22 +1,19 @@
 import { MouseEventHandler } from 'react';
-import { router, usePage } from '@inertiajs/react';
+import { route } from 'ziggy-js';
+import { router } from '@inertiajs/react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 import { Currency } from '@/Components/ui/currency';
 import IconButton from '@/Components/ui/icon-button';
 // import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
-import { PageProps, Product } from '@/types';
+import { Product } from '@/types';
 
 interface ProductCard {
   data: Product;
 }
 
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
-  const { auth, current } = usePage<PageProps>().props;
-
-  console.log(data);
-
   // const previewModal = usePreviewModal();
   // const cart = useCart();
   // const router = useRouter();
@@ -35,21 +32,13 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
   return (
     <div
-      onClick={() =>
-        router.visit(
-          route('product', {
-            user: auth.user.username,
-            store: current.store.slug,
-            product: data.id,
-          }),
-        )
-      }
+      onClick={() => router.visit(route('product', { product: data.id }))}
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
     >
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <img
-          src={data.images?.[0]?.image_url}
+          src={data.images?.[0]?.url}
           alt=""
           className="aspect-square object-cover rounded-md h-full w-full"
         />

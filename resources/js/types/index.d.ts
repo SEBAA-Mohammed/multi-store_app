@@ -21,7 +21,7 @@ export interface Store {
 export interface Category {
   id: number;
   name: string;
-  image_url: string;
+  url: string;
 }
 
 export interface Product {
@@ -42,22 +42,27 @@ export interface Product {
 
 export interface ProductImage {
   id: number;
-  image_url: string;
+  url: string;
 }
 
-export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-  auth: {
-    user: User;
-  };
+// export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+//   auth: {
+//     user: User;
+//   };
+//   current: {
+//     store: Store;
+//     categories: Category[];
+//   };
+// };
+
+export interface Auth {
+  user: User;
+}
+
+export type InertiaSharedProps<T = {}> = T & {
+  auth: Auth;
   current: {
     store: Store;
     categories: Category[];
-  };
-  routes: {
-    home: {
-      user: User['username'];
-      store: Store['slug'];
-    };
-    // products: {}
   };
 };

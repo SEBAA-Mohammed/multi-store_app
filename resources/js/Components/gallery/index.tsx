@@ -18,14 +18,10 @@ export const Gallery: React.FC<GalleryProps> = ({ images = [] }) => {
         </Tab.List>
       </div>
       <Tab.Panels className="aspect-square w-full">
-        {images.map(({ id, image_url }) => (
+        {images.map(({ id, url }) => (
           <Tab.Panel key={id}>
             <div className="aspect-square relative h-full w-full sm:rounded-lg overflow-hidden">
-              <img
-                src={image_url}
-                alt="Image"
-                className="h-full w-full object-cover object-center"
-              />
+              <img src={url} alt="Image" className="h-full w-full object-cover object-center" />
             </div>
           </Tab.Panel>
         ))}
