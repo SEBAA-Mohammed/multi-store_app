@@ -53,11 +53,4 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     store: Store;
     categories: Category[];
   };
-  routes: {
-    home: {
-      user: User['username'];
-      store: Store['slug'];
-    };
-    // products: {}
-  };
 };

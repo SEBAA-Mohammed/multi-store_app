@@ -15,8 +15,6 @@ interface ProductCard {
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const { auth, current } = usePage<PageProps>().props;
 
-  console.log(data);
-
   // const previewModal = usePreviewModal();
   // const cart = useCart();
   // const router = useRouter();
@@ -35,15 +33,7 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
   return (
     <div
-      onClick={() =>
-        router.visit(
-          route('product', {
-            user: auth.user.username,
-            store: current.store.slug,
-            product: data.id,
-          }),
-        )
-      }
+      onClick={() => router.visit(route('product', { product: data.id }))}
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
     >
       {/* Image & actions */}
