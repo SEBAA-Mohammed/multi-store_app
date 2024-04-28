@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { FC } from 'react';
+import { route } from 'ziggy-js';
 
 import { cn } from '@/lib/utils';
 import { Category } from '@/types';
@@ -9,12 +10,10 @@ interface MainNav {
 }
 
 export const NavigationBar: FC<MainNav> = ({ data }) => {
-  const url = '';
-
   const routes = data.map(({ id, name }) => ({
-    href: `/category/${id}`,
+    href: route('category', { category: id }),
     label: name,
-    active: url === `/category/${id}`,
+    active: route().current('category', { category: id }),
   }));
 
   return (

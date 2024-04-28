@@ -33,8 +33,8 @@ export interface Product {
   description: string;
   stock: number;
   rating: number;
-  images?: ProductImage[];
-  category?: Category;
+  images: ProductImage[];
+  category: Category;
   // brand?: BrandResource;
   // unit?: UnitResource;
   // store?: StoreResource;
