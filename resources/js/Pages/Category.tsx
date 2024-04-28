@@ -14,7 +14,7 @@ export default function Category({ category, products }: CategoryProps) {
   return (
     <div className="bg-white">
       <Container>
-        <Billboard billboardUrl={category.url} />
+        <Billboard url={category.url} />
         {/* <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters sizes={sizes} colors={colors} />
