@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
 
         return [
             'name' => fake()->word(),
-            'image_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
+            'url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
             'store_category_id' => $store->storeCategory->id,
             'store_id' => $store->id
         ];

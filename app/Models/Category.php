@@ -13,7 +13,7 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'image_url',
+        'url',
         'store_categorie_id'
     ];
 
