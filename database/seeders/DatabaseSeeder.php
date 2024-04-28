@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
             StoreUserSeeder::class,
             PaymentMethodSeeder::class,
             StatusSeeder::class,
-            BrandSeeder::class,
-            UnitSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
             ProductImageSeeder::class,

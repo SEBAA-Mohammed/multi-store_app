@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\StoreCategory;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\DB;
 
 class StoreCategorySeeder extends Seeder
 {
@@ -14,11 +12,32 @@ class StoreCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
+        $eCommerceTypes = [
+            "Clothing and Fashion",
+            "Electronics and Gadgets",
+            "Books and Literature",
+            "Home and Furniture",
+            "Health and Beauty",
+            "Sports and Outdoor Equipment",
+            "Toys and Games",
+            "Automotive Parts and Accessories",
+            "Food and Grocery",
+            "Jewelry and Accessories",
+            "Pet Supplies",
+            "Arts and Crafts",
+            "Baby and Kids Products",
+            "Office Supplies",
+            "Travel and Luggage",
+            "Musical Instruments",
+            "Gardening and Outdoor Decor",
+            "Collectibles and Memorabilia",
+            "Digital Products and Services",
+            "Handmade and Artisanal Goods"
+        ];
 
-        foreach (range(1, 3) as $index) {
-            DB::table('store_categories')->insert([
-                'name' => $faker->word,
+        foreach ($eCommerceTypes as $type) {
+            StoreCategory::create([
+                'name' => $type
             ]);
         }
     }
