@@ -74,6 +74,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('tva')
                     ->numeric()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('stock')
                     ->numeric()
                     ->sortable(),

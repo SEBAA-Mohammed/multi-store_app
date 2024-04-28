@@ -31,6 +31,7 @@ class BrandResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required(),
                 Forms\Components\FileUpload::make('image_url')
+                    // ->disk('local')
                     ->image()
                     ->required(),
             ]);
@@ -43,7 +44,9 @@ class BrandResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image_url')
-                    ->label('Image'),
+                    // ->disk('local')
+                    ->label('Logo')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('products_count')->counts('products'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
