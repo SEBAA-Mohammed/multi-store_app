@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -28,37 +29,44 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('category_id')
-                    ->label('Category')
-                    ->relationship('category', 'name')
-                    ->required(),
-                Forms\Components\Select::make('brand_id')
-                    ->label('Brand')
-                    ->relationship('brand', 'name')
-                    ->required(),
-                Forms\Components\Select::make('unit_id')
-                    ->label('Unit')
-                    ->relationship('unit', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('barcode')
-                    ->required(),
-                Forms\Components\TextInput::make('designation')
-                    ->required(),
-                Forms\Components\TextInput::make('prix_ht')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('tva')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('stock')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('rating')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Section::make('Product informations')
+                    ->schema([
+                        Forms\Components\Select::make('category_id')
+                            ->label('Category')
+                            ->relationship('category', 'name')
+                            ->required(),
+                        Forms\Components\Select::make('brand_id')
+                            ->label('Brand')
+                            ->relationship('brand', 'name')
+                            ->required(),
+                        Forms\Components\Select::make('unit_id')
+                            ->label('Unit')
+                            ->relationship('unit', 'name')
+                            ->required(),
+                        Forms\Components\TextInput::make('barcode')
+                            ->required(),
+                        Forms\Components\TextInput::make('designation')
+                            ->required(),
+                        Forms\Components\TextInput::make('prix_ht')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\TextInput::make('tva')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\Textarea::make('description')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\TextInput::make('stock')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\TextInput::make('rating')
+                            ->required()
+                            ->numeric(),
+                    ]),
+                Forms\Components\Section::make('Product Images')
+                    ->schema([
+                        static::getImagesRepeater(),
+                    ])
             ]);
     }
 
@@ -111,6 +119,17 @@ class ProductResource extends Resource
             ]);
     }
 
+    public static function getImagesRepeater(): Repeater
+    {
+        return Repeater::make('images')
+            ->relationship()
+            ->schema([
+                Forms\Components\FileUpload::make('url')
+                    ->image()
+                    ->required(),
+            ]);
+    }
+
 
 
     public static function getRelations(): array
@@ -125,7 +144,7 @@ class ProductResource extends Resource
         return [
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
-            // 'view' => Pages\ViewProduct::route('/{record}'),
+            'view' => Pages\ViewProduct::route('/{record}'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
