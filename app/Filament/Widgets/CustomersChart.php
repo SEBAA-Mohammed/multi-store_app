@@ -11,7 +11,7 @@ class CustomersChart extends ChartWidget
 {
     protected static ?string $heading = 'Customers Chart';
 
-    protected static string $color = 'info';
+    protected static string $color = 'primary';
 
     protected function getData(): array
     {

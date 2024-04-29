@@ -11,7 +11,9 @@ class OrdersChart extends ChartWidget
 {
     protected static ?string $heading = 'Orders Chart';
 
-    protected static string $color = 'info';
+    protected static string $color = 'primary';
+
+    protected static ?string $pollingInterval = '60s';
 
     protected function getData(): array
     {
@@ -26,7 +28,7 @@ class OrdersChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Orders',
+                    'label' => 'Number of orders',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
