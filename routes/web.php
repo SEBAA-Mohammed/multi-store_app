@@ -18,7 +18,7 @@ Route::scopeBindings()->prefix('/{user}/{store}')->group(function () {
 
     Route::get('/product/{product}', ProductController::class)->name('product');
 
-    Route::get('/category/{category}', [CategoryController::class, 'index'])->name('category');
+    Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category');
 
     Route::get('/cart', CartController::class)->name('cart');
 });

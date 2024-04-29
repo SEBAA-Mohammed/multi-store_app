@@ -22,6 +22,7 @@ export interface Category {
   id: number;
   name: string;
   url: string;
+  store_id: number;
 }
 
 export interface Product {

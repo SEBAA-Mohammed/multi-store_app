@@ -38,7 +38,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'current' => $store ? [
                 'store' => $store,
-                'categories' => $store->storeCategory->categories ?? []
+                'categories' => $store->categories ?? []
             ] : null,
         ];
     }

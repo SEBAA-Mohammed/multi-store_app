@@ -31,7 +31,7 @@ class ProductFactory extends Factory
             'stock' => fake()->numberBetween(0, 5000),
             'rating' => fake()->numberBetween(1, 5),
             'store_id' => $store->id,
-            'category_id' => $store->storeCategory->categories()->inRandomOrder()->first()->id,
+            'category_id' => $store->categories()->inRandomOrder()->first()->id,
             'brand_id' => Brand::factory()->forStore($store)->create()->id,
             'unit_id' => Unit::factory()->forStore($store)->create()->id,
             'created_at' => now(),

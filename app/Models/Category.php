@@ -14,17 +14,16 @@ class Category extends Model
     protected $fillable = [
         'name',
         'url',
-        'store_categorie_id'
+        'store_id'
     ];
-
 
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    public function storeCategory(): BelongsTo
+    public function store(): BelongsTo
     {
-        return $this->belongsTo(StoreCategory::class);
+        return $this->belongsTo(Store::class);
     }
 }

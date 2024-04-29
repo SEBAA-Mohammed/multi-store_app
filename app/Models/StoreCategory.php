@@ -18,9 +18,4 @@ class StoreCategory extends Model
     {
         return $this->hasMany(Store::class);
     }
-
-    public function categories(): HasMany
-    {
-        return $this->hasMany(Category::class);
-    }
 }

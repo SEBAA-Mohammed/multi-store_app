@@ -4,12 +4,12 @@ import { MainLayout } from '@/Layouts/MainLayout';
 import { Category as ICategory, Product } from '@/types';
 
 interface CategoryProps {
-  products: Product[];
+  // products: Product[];
   category: ICategory;
 }
 
-export default function Category({ category, products }: CategoryProps) {
-  console.log(products);
+export default function Category({ category }: CategoryProps) {
+  console.log(category);
 
   return (
     <div className="bg-white">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\User;
@@ -15,9 +17,9 @@ class CategoryController extends Controller
      */
     public function index(User $user, Store $store)
     {
-        return inertia('Category', [
-            'products' => ProductResource::collection($store->products)
-        ]);
+        // return inertia('Category', [
+        //     'products' => ProductResource::collection($store->products)
+        // ]);
     }
 
     /**
@@ -39,9 +41,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(User $user, Store $store, Category $category)
     {
-        //
+        return inertia('Category', [
+            'category' => new CategoryResource($category)
+        ]);
     }
 
     /**

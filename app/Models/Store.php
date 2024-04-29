@@ -69,6 +69,11 @@ class Store extends Model implements HasCurrentTenantLabel
         return $this->hasMany(Rating::class);
     }
 
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
