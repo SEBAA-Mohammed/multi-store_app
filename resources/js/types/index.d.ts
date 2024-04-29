@@ -25,6 +25,17 @@ export interface Category {
   store_id: number;
 }
 
+export interface Brand {
+  id: number;
+  nom: string;
+  logo: string;
+}
+
+export interface Unit {
+  id: number;
+  name: string;
+}
+
 export interface Product {
   id: number;
   barcode: string;
@@ -36,9 +47,9 @@ export interface Product {
   rating: number;
   images: ProductImage[];
   category: Category;
-  // brand?: BrandResource;
-  // unit?: UnitResource;
-  // store?: StoreResource;
+  brand?: Brand;
+  unit?: Unit;
+  store?: Store;
 }
 
 export interface ProductImage {

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image_url');
+            $table->string('logo');
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

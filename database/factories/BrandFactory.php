@@ -19,7 +19,7 @@ class BrandFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'image_url' => fake()->imageUrl(width: 512, height: 512, format: 'png'),
+            'logo' => fake()->imageUrl(width: 512, height: 512, format: 'png'),
             'store_id' => fake()->randomElement(Store::pluck('id')),
             // 'store_id' => Store::inRandomOrder()->first()->id
         ];

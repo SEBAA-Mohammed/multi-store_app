@@ -30,7 +30,7 @@ class BrandResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\FileUpload::make('image_url')
+                Forms\Components\FileUpload::make('logo')
                     ->image()
                     ->required(),
             ]);
@@ -42,7 +42,7 @@ class BrandResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image_url')
+                Tables\Columns\ImageColumn::make('logo')
                     ->label('Image'),
                 Tables\Columns\TextColumn::make('products_count')->counts('products'),
                 Tables\Columns\TextColumn::make('created_at')

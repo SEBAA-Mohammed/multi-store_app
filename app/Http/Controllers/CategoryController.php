@@ -44,7 +44,8 @@ class CategoryController extends Controller
     public function show(User $user, Store $store, Category $category)
     {
         return inertia('Category', [
-            'category' => new CategoryResource($category)
+            'category' => new CategoryResource($category),
+            'products' => ProductResource::collection($category->products)
         ]);
     }
 

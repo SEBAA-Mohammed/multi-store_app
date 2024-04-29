@@ -1,16 +1,16 @@
 import { Billboard } from '@/Components/Billboard';
 import { Container } from '@/Components/ui/container';
+import { NoResults } from '@/Components/ui/no-result';
+import { ProductCard } from '@/Components/ui/product-card';
 import { MainLayout } from '@/Layouts/MainLayout';
 import { Category as ICategory, Product } from '@/types';
 
 interface CategoryProps {
-  // products: Product[];
+  products: Product[];
   category: ICategory;
 }
 
-export default function Category({ category }: CategoryProps) {
-  console.log(category);
-
+export default function Category({ category, products }: CategoryProps) {
   return (
     <div className="bg-white">
       <Container>
