@@ -26,7 +26,7 @@ class LatestOrders extends BaseWidget
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Order Date')
-                    ->date()
+                    ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
@@ -39,7 +39,7 @@ class LatestOrders extends BaseWidget
             ])
             ->actions([
                 Tables\Actions\Action::make('open')
-                    ->url(fn (ModelsOrder $record): string => ResourcesOrderResource::getUrl('edit', ['record' => $record])),
+                    ->url(fn (ModelsOrder $record): string => ResourcesOrderResource::getUrl('view', ['record' => $record])),
             ]);
     }
 }

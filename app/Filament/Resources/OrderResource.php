@@ -26,11 +26,24 @@ class OrderResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('user_id')
+                    ->label('Brand')
+                    ->relationship('user', 'name')
+                    ->required(),
+                Forms\Components\Textarea::make('adresse_livraison')
+                    ->required(),
+                Forms\Components\Radio::make('is_paid')
+                    ->label('Paid ?')
+                    ->boolean()
             ]);
     }
 
@@ -43,9 +56,12 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('datetime_order')
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Order Date')
+                    ->sortable()
+                    ->dateTime(),
                 Tables\Columns\IconColumn::make('is_paid')
+                    ->sortable()
                     ->boolean()
                     ->label('Paid'),
                 Tables\Columns\TextColumn::make('adresse_livraison')
@@ -70,17 +86,17 @@ class OrderResource extends Resource
     }
 
 
-    public static function infolist(Infolist $infolist): Infolist
-    {
-        return $infolist
-            ->schema([
-                Infolists\Components\TextEntry::make('user.name'),
-                Infolists\Components\TextEntry::make('datetime_order'),
-                Infolists\Components\TextEntry::make('is_paid'),
-                Infolists\Components\TextEntry::make('adresse_livraison'),
-                Infolists\Components\TextEntry::make('status.name'),
-            ]);
-    }
+    // public static function infolist(Infolist $infolist): Infolist
+    // {
+    //     return $infolist
+    //         ->schema([
+    //             Infolists\Components\TextEntry::make('user.name'),
+    //             Infolists\Components\TextEntry::make('created_at'),
+    //             Infolists\Components\TextEntry::make('is_paid'),
+    //             Infolists\Components\TextEntry::make('adresse_livraison'),
+    //             Infolists\Components\TextEntry::make('status.name'),
+    //         ]);
+    // }
 
 
     public static function getRelations(): array
@@ -95,7 +111,7 @@ class OrderResource extends Resource
         return [
             'index' => Pages\ListOrders::route('/'),
             // 'create' => Pages\CreateOrder::route('/create'),
-            // 'view' => Pages\ViewOrder::route('/{record}'),
+            'view' => Pages\ViewOrder::route('/{record}'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }
