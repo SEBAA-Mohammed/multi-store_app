@@ -13,8 +13,8 @@ class Unit extends Model
 
     protected $fillable = [
         'name',
+        'store_id'
     ];
-
 
     public function products(): HasMany
     {

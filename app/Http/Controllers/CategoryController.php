@@ -6,74 +6,35 @@ use App\Http\Resources\BrandResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\UnitResource;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\User;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index(User $user, Store $store)
-    {
-        // return inertia('Category', [
-        //     'products' => ProductResource::collection($store->products)
-        // ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Display the specified category.
      */
     public function show(User $user, Store $store, Category $category)
     {
         return inertia('Category', [
             'category' => new CategoryResource($category),
             'products' => ProductResource::collection($category->products),
-            'brands' => [], // BrandResource::collection(),
+            'brands' => BrandResource::collection($this->getBrands($category)),
             'units' => [] // UnitResource::collection(),
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
+    private function getBrands(Category $category)
     {
-        //
-    }
+        // Get the brand IDs associated with the products of the category
+        $brandIds = $category->products()->pluck('brand_id')->unique();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        // Get the brands based on the retrieved brand IDs
+        return Brand::whereIn('id', $brandIds)->get();
     }
 }

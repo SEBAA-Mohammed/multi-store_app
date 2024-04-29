@@ -54,7 +54,7 @@ export const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
               )}
               //   onClick={() => onClick('filter.id')}
             >
-              {'filter.name'}
+              {filter.name}
             </Button>
           </div>
         ))}

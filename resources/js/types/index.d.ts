@@ -27,7 +27,7 @@ export interface Category {
 
 export interface Brand {
   id: number;
-  nom: string;
+  name: string;
   logo: string;
 }
 

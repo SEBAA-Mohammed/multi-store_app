@@ -13,7 +13,8 @@ class Brand extends Model
 
     protected $fillable = [
         'name',
-        'logo'
+        'logo',
+        'store_id'
     ];
 
     public function products(): HasMany

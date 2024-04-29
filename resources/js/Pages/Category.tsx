@@ -15,6 +15,8 @@ interface CategoryProps {
 }
 
 export default function Category({ category, products, brands, units }: CategoryProps) {
+  console.log(brands);
+
   return (
     <div className="bg-white">
       <Container>
@@ -23,8 +25,8 @@ export default function Category({ category, products, brands, units }: Category
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters brands={brands} units={units} />
             <div className="hidden lg:block">
-              <Filter valueKey="brandId" name="Sizes" data={brands} />
-              <Filter valueKey="unitId" name="Colors" data={units} />
+              <Filter valueKey="brandId" name="Brands" data={brands} />
+              <Filter valueKey="unitId" name="Units" data={units} />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
