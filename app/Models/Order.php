@@ -12,7 +12,6 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'datetime_order',
         'adresse_livraison',
         'is_paid',
         'payment_method_id',

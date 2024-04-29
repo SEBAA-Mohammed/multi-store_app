@@ -19,13 +19,13 @@ class OrderSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('orders')->insert([
-                'datetime_order' => $faker->dateTime(),
                 'is_paid' => $faker->boolean,
                 'adresse_livraison' => $faker->text(),
                 'payment_method_id' => $faker->numberBetween(1, 3),
                 'user_id' => $faker->numberBetween(1, 3),
                 'status_id' => $faker->numberBetween(1, 3),
                 'store_id' => Store::where('slug', 'store-1')->first()->id,
+                'created_at' => $faker->dateTimeBetween(date('2024-01-01'), date('2024-12-30')),
             ]);
         }
     }
