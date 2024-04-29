@@ -4,7 +4,7 @@ import { router } from '@inertiajs/react';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 import { Currency } from '@/Components/ui/currency';
-import IconButton from '@/Components/ui/icon-button';
+import { IconButton } from '@/Components/ui/icon-button';
 // import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
 import { Product } from '@/types';

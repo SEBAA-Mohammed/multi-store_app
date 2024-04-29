@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BrandResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\UnitResource;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
@@ -45,7 +47,9 @@ class CategoryController extends Controller
     {
         return inertia('Category', [
             'category' => new CategoryResource($category),
-            'products' => ProductResource::collection($category->products)
+            'products' => ProductResource::collection($category->products),
+            'brands' => [], // BrandResource::collection(),
+            'units' => [] // UnitResource::collection(),
         ]);
     }
 
