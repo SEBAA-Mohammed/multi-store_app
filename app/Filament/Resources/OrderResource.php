@@ -5,11 +5,14 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
+use App\Models\Product;
 use Filament\Actions\CreateAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -26,13 +29,44 @@ class OrderResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Order informations')
+                    ->schema([
+                        Forms\Components\Select::make('user_id')
+                            ->label('User name')
+                            ->relationship('user', 'name')
+                            ->required(),
+                        Forms\Components\Textarea::make('adresse_livraison')
+                            ->required(),
+                        Forms\Components\Radio::make('is_paid')
+                            ->label('Paid ?')
+                            ->boolean()
+                    ]),
+
+                Forms\Components\Section::make('Order items')
+                    ->headerActions([
+                        Action::make('reset')
+                            ->modalHeading('Are you sure?')
+                            ->modalDescription('All existing items will be removed from the order.')
+                            ->requiresConfirmation()
+                            ->color('danger')
+                            ->action(fn (Forms\Set $set) => $set('items', [])),
+                    ])
+                    ->columnSpan('full') // Set the column span to full width
+                    ->schema([
+                        static::getItemsRepeater(),
+                    ]),
             ]);
     }
+
 
 
 
@@ -43,9 +77,12 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('datetime_order')
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Order Date')
+                    ->sortable()
+                    ->dateTime(),
                 Tables\Columns\IconColumn::make('is_paid')
+                    ->sortable()
                     ->boolean()
                     ->label('Paid'),
                 Tables\Columns\TextColumn::make('adresse_livraison')
@@ -70,16 +107,80 @@ class OrderResource extends Resource
     }
 
 
-    public static function infolist(Infolist $infolist): Infolist
+
+    public static function getItemsRepeater(): Repeater
     {
-        return $infolist
+        return Repeater::make('orderDetails')
+            ->relationship()
             ->schema([
-                Infolists\Components\TextEntry::make('user.name'),
-                Infolists\Components\TextEntry::make('datetime_order'),
-                Infolists\Components\TextEntry::make('is_paid'),
-                Infolists\Components\TextEntry::make('adresse_livraison'),
-                Infolists\Components\TextEntry::make('status.name'),
-            ]);
+                Forms\Components\Select::make('product_id')
+                    ->label('Product')
+                    ->options(Product::query()->pluck('designation', 'id'))
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('prix_achat', Product::find($state)?->price ?? 0))
+                    ->distinct()
+                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                    ->columnSpan([
+                        'md' => 4,
+                    ])
+                    ->searchable(),
+
+                Forms\Components\TextInput::make('qte')
+                    ->label('Quantity')
+                    ->numeric()
+                    ->default(1)
+                    ->columnSpan([
+                        'md' => 2,
+                    ])
+                    ->required(),
+
+                Forms\Components\TextInput::make('prix_achat')
+                    ->label('Unit Price')
+                    ->disabled()
+                    ->dehydrated()
+                    ->numeric()
+                    ->required()
+                    ->columnSpan([
+                        'md' => 2,
+                    ]),
+                Forms\Components\TextInput::make('tva_achat')
+                    ->label('TVA')
+                    ->disabled()
+                    ->dehydrated()
+                    ->numeric()
+                    ->required()
+                    ->columnSpan([
+                        'md' => 2,
+                    ]),
+            ])
+            ->extraItemActions([
+                Action::make('openProduct')
+                    ->tooltip('Open product')
+                    ->icon('heroicon-m-arrow-top-right-on-square')
+                    ->url(function (
+                        array $arguments,
+                        Repeater $component
+                    ): ?string {
+                        $itemData = $component->getRawItemState($arguments['item']);
+
+                        $product = Product::find($itemData['product_id']);
+
+                        if (!$product) {
+                            return null;
+                        }
+
+                        return ProductResource::getUrl('edit', ['record' => $product]);
+                    }, shouldOpenInNewTab: true)
+                    ->hidden(fn (array $arguments, Repeater $component): bool => blank($component->getRawItemState($arguments['item'])['product_id'])),
+            ])
+            ->orderColumn('sort')
+            ->defaultItems(1)
+            ->hiddenLabel()
+            ->columns([
+                'md' => 10,
+            ])
+            ->required();
     }
 
 
@@ -95,7 +196,7 @@ class OrderResource extends Resource
         return [
             'index' => Pages\ListOrders::route('/'),
             // 'create' => Pages\CreateOrder::route('/create'),
-            // 'view' => Pages\ViewOrder::route('/{record}'),
+            'view' => Pages\ViewOrder::route('/{record}'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }

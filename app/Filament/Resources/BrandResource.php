@@ -43,7 +43,8 @@ class BrandResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('logo')
-                    ->label('Image'),
+                    ->label('Logo')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('products_count')->counts('products'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

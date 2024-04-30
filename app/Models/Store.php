@@ -27,7 +27,11 @@ class Store extends Model implements HasCurrentTenantLabel
         });
     }
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = [
+        'name',
+        'user_id',
+        'slug',
+    ];
 
     public function getRouteKeyName()
     {
