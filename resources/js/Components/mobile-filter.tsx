@@ -39,8 +39,8 @@ export const MobileFilters: React.FC<MobileFiltersProps> = ({ brands, units }) =
             </div>
 
             <div className="p-4">
-              <Filter valueKey="sizeId" name="Sizes" data={brands} />
-              <Filter valueKey="colorId" name="Colors" data={units} />
+              <Filter queryKey="brand" name="Brands" data={brands} />
+              <Filter queryKey="unit" name="Units" data={units} />
             </div>
           </Dialog.Panel>
         </div>

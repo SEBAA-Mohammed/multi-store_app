@@ -1,6 +1,3 @@
-// import qs from 'query-string';
-// import { useRouter, useSearchParams } from 'next/navigation';
-
 import { Button } from '@/Components/ui/button';
 import { useFilterCategory } from '@/Hooks/filter-category';
 import { cn } from '@/lib/utils';
@@ -9,11 +6,10 @@ import { Brand, Unit } from '@/types';
 interface FilterProps {
   data: (Brand | Unit)[];
   name: string;
-  valueKey: string;
   queryKey: string;
 }
 
-export const Filter: React.FC<FilterProps> = ({ data, name, valueKey, queryKey }) => {
+export const Filter: React.FC<FilterProps> = ({ data, name, queryKey }) => {
   const { onClick, selectedValue } = useFilterCategory(queryKey);
 
   return (
@@ -25,7 +21,7 @@ export const Filter: React.FC<FilterProps> = ({ data, name, valueKey, queryKey }
           <div key={filterId} className="flex items-center">
             <Button
               className={cn(
-                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
+                'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300 hover:text-white',
                 selectedValue === filterId && 'bg-black text-white',
               )}
               onClick={() => onClick({ [queryKey]: filterId })}

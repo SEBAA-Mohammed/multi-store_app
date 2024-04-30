@@ -12,9 +12,7 @@ export function useFilterCategory(queryKey: string) {
     throw new Error('Make sure you are using this hook inside category page');
   }
 
-  const selectedValue = route().params[queryKey] as number | undefined;
-
-  console.log(selectedValue);
+  const selectedValue = parseInt(route().params[queryKey] as string);
 
   function onClick(queryObj: QueryProps): void {
     return router.visit(
