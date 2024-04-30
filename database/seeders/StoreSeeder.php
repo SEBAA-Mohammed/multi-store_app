@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Store;
+use App\Models\StoreCategory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,7 +26,7 @@ class StoreSeeder extends Seeder
                 'billboard_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
                 'logo_url' => fake()->imageUrl(),
                 'tel' => '+212 762 416 046',
-                'store_category_id' => fake()->numberBetween(1, 3),
+                'store_category_id' => StoreCategory::inRandomOrder()->first()->id,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -39,7 +40,7 @@ class StoreSeeder extends Seeder
                 'billboard_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
                 'logo_url' => fake()->imageUrl(),
                 'tel' => '+212 762 416 046',
-                'store_category_id' => fake()->numberBetween(1, 3),
+                'store_category_id' => StoreCategory::inRandomOrder()->first()->id,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -53,7 +54,7 @@ class StoreSeeder extends Seeder
                 'billboard_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
                 'logo_url' => fake()->imageUrl(),
                 'tel' => '+212 762 416 046',
-                'store_category_id' => fake()->numberBetween(1, 3),
+                'store_category_id' => StoreCategory::inRandomOrder()->first()->id,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -67,7 +68,7 @@ class StoreSeeder extends Seeder
                 'billboard_url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
                 'logo_url' => fake()->imageUrl(),
                 'tel' => '+212 762 416 046',
-                'store_category_id' => fake()->numberBetween(1, 3),
+                'store_category_id' => StoreCategory::inRandomOrder()->first()->id,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

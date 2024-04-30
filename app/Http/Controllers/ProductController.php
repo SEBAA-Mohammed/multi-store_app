@@ -35,6 +35,6 @@ class ProductController extends Controller
             ->whereNot('id', $product->id)
             ->get();
 
-        return ProductResource::collection($suggestedProducts->load(['images', 'category']));
+        return ProductResource::collection($suggestedProducts);
     }
 }

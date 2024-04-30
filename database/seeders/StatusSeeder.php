@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -14,12 +15,6 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
-        foreach (range(1, 3) as $index) {
-            DB::table('statuses')->insert([
-                'name' => $faker->word,
-            ]);
-        }
+        Status::factory(5)->create();
     }
 }
