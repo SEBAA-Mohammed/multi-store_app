@@ -19,23 +19,7 @@ class UnitFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'store_id' => fake()->randomElement(Store::pluck('id'))
-            // 'store_id' => Store::inRandomOrder()->first()->id
+            'store_id' => Store::inRandomOrder()->first()->id
         ];
-    }
-
-    /**
-     * Indicate the store for the unit.
-     *
-     * @param  \App\Models\Store  $store
-     * @return $this
-     */
-    public function forStore(Store $store)
-    {
-        return $this->state(function () use ($store) {
-            return [
-                'store_id' => $store->id,
-            ];
-        });
     }
 }

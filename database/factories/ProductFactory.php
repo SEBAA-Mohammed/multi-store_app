@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Store;
 use App\Models\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -32,10 +30,22 @@ class ProductFactory extends Factory
             'rating' => fake()->numberBetween(1, 5),
             'store_id' => $store->id,
             'category_id' => $store->categories()->inRandomOrder()->first()->id,
-            'brand_id' => Brand::factory()->forStore($store)->create()->id,
-            'unit_id' => Unit::factory()->forStore($store)->create()->id,
+            'brand_id' => $store->brands()->inRandomOrder()->first()->id,
+            'unit_id' => $store->units()->inRandomOrder()->first()->id,
             'created_at' => now(),
             'updated_at' => now(),
         ];
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function ($product) {
+            ProductImageFactory::times(4)->forProduct($product->id)->create();
+        });
     }
 }

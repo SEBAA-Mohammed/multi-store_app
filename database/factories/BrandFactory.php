@@ -20,23 +20,7 @@ class BrandFactory extends Factory
         return [
             'name' => fake()->word(),
             'logo' => fake()->imageUrl(width: 512, height: 512, format: 'png'),
-            'store_id' => fake()->randomElement(Store::pluck('id')),
-            // 'store_id' => Store::inRandomOrder()->first()->id
+            'store_id' => Store::inRandomOrder()->first()->id
         ];
-    }
-
-    /**
-     * Indicate the store for the brand.
-     *
-     * @param  \App\Models\Store  $store
-     * @return $this
-     */
-    public function forStore(Store $store)
-    {
-        return $this->state(function () use ($store) {
-            return [
-                'store_id' => $store->id,
-            ];
-        });
     }
 }

@@ -19,7 +19,22 @@ class ProductImageFactory extends Factory
     {
         return [
             'url' => fake()->imageUrl(width: 1920, height: 1080, format: 'jpg'),
-            'product_id' => Product::inRandomOrder()->first()->id,
+            // 'product_id' => Product::inRandomOrder()->first()->id,
         ];
+    }
+
+    /**
+     * Indicate the product for the product image.
+     *
+     * @param  int  $productId
+     * @return $this
+     */
+    public function forProduct(int $productId)
+    {
+        return $this->state(function () use ($productId) {
+            return [
+                'product_id' => $productId,
+            ];
+        });
     }
 }
