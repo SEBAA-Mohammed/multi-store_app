@@ -19,7 +19,7 @@ class CategoryController extends Controller
     /**
      * Display the specified category.
      */
-    public function show(User $user, Store $store, Category $category, Request $request)
+    public function __invoke(User $user, Store $store, Category $category, Request $request)
     {
         $filters = [
             'brand_id' => $request->query('brand'),
