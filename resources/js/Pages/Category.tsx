@@ -15,18 +15,16 @@ interface CategoryProps {
 }
 
 export default function Category({ category, products, brands, units }: CategoryProps) {
-  console.log(brands);
-
   return (
     <div className="bg-white">
       <Container>
         <Billboard url={category.url} />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters brands={brands} units={units} />
+            {/* <MobileFilters brands={brands} units={units} /> */}
             <div className="hidden lg:block">
-              <Filter valueKey="brandId" name="Brands" data={brands} />
-              <Filter valueKey="unitId" name="Units" data={units} />
+              <Filter valueKey="brandId" name="Brands" queryKey="brand" data={brands} />
+              {/* <Filter valueKey="unitId" name="Units" queryKey="unit" data={units} /> */}
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}

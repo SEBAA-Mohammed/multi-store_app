@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BrandResource;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductResource;
-use App\Http\Resources\UnitResource;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Store;
 use App\Models\User;
-use Barryvdh\Debugbar\Facades\Debugbar;
+use App\Models\Brand;
+use App\Models\Store;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Resources\BrandResource;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\CategoryResource;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class CategoryController extends Controller
 {
     /**
      * Display the specified category.
      */
-    public function show(User $user, Store $store, Category $category)
+    public function show(User $user, Store $store, Category $category, Request $request)
     {
+        Debugbar::info($request->query());
         return inertia('Category', [
             'category' => new CategoryResource($category),
             'products' => ProductResource::collection($category->products),
