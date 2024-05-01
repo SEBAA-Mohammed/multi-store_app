@@ -1,8 +1,11 @@
 import { ReactNode, createContext, useContext, useState } from 'react';
 
+import { Product } from '@/types';
+
 interface PreviewModalContextType {
   isOpen: boolean;
-  onOpen: () => void;
+  selectedProduct?: Product;
+  onOpen: (product: Product) => void;
   onClose: () => void;
 }
 
@@ -18,13 +21,20 @@ export const usePreviewModal = () => {
 
 export function PreviewModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
 
-  const onOpen = () => setIsOpen(true);
+  const onOpen = (product: Product) => {
+    setSelectedProduct(product);
+    setIsOpen(true);
+  };
 
-  const onClose = () => setIsOpen(false);
+  const onClose = () => {
+    setSelectedProduct(undefined);
+    setIsOpen(false);
+  };
 
   return (
-    <PreviewModalContext.Provider value={{ isOpen, onOpen, onClose }}>
+    <PreviewModalContext.Provider value={{ isOpen, selectedProduct, onOpen, onClose }}>
       {children}
     </PreviewModalContext.Provider>
   );

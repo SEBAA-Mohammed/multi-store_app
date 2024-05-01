@@ -12,7 +12,6 @@ use App\Http\Resources\ProductResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\UnitResource;
 use App\Models\Unit;
-use Barryvdh\Debugbar\Facades\Debugbar;
 
 class CategoryController extends Controller
 {
