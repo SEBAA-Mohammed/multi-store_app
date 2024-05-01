@@ -42,6 +42,7 @@ export interface Product {
   designation: string;
   prix_ht: number;
   tva: number;
+  price: number;
   description: string;
   stock: number;
   rating: number;

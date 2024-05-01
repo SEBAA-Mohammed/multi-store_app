@@ -59,7 +59,7 @@ export function ProductCard({ data }: ProductCard) {
       </div>
       {/* Price & Review */}
       <div className="flex items-center justify-between">
-        <Currency value={data?.prix_ht} />
+        <Currency value={data?.price} />
       </div>
     </div>
   );

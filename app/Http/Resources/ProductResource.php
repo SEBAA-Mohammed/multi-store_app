@@ -20,6 +20,7 @@ class ProductResource extends JsonResource
             'designation' => $this->designation,
             'prix_ht' => $this->prix_ht,
             'tva' => $this->tva,
+            'price' => round($this->prix_ht * (1 + $this->tva), 2),
             'description' => $this->description,
             'stock' => $this->stock,
             'rating' => $this->rating,
