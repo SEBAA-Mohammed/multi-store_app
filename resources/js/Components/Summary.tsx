@@ -3,28 +3,32 @@
 
 import { Button } from '@/Components/ui/button';
 import { Currency } from '@/Components/ui/currency';
-// import useCart from "@/hooks/use-cart";
-// import { toast } from "react-hot-toast";
+import { useCart } from '@/Contexts/CartContext';
+import { useToast } from '@/Components/ui/use-toast';
 
 export function Summary() {
   //   const searchParams = useSearchParams();
-  //   const items = useCart((state) => state.items);
-  //   const removeAll = useCart((state) => state.removeAll);
+  const { items, removeAll } = useCart();
+  const { toast } = useToast();
 
-  //   useEffect(() => {
-  //     if (searchParams.get('success')) {
-  //       toast.success('Payment completed.');
-  //       removeAll();
-  //     }
+  // useEffect(() => {
+  //   if (searchParams.get('success')) {
+  //   toast({ title: 'Success', description: 'Payment completed.' });
+  //     removeAll();
+  //   }
 
-  //     if (searchParams.get('canceled')) {
-  //       toast.error('Something went wrong.');
-  //     }
-  //   }, [searchParams, removeAll]);
+  //   if (searchParams.get('canceled')) {
+  //   toast({
+  //     variant: 'destructive',
+  //     title: 'Canceled',
+  //     description: 'Something went wrong.',
+  //   });
+  //   }
+  // }, [searchParams, removeAll]);
 
-  //   const totalPrice = items.reduce((total, item) => {
-  //     return total + Number(item.price)
-  //   }, 0);
+  const totalPrice = items.reduce((total, item) => {
+    return total + Number(item.price);
+  }, 0);
 
   //   const onCheckout = async () => {
   //     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
@@ -40,13 +44,13 @@ export function Summary() {
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Order total</div>
-          {/* <Currency value={totalPrice} /> */}
+          <Currency value={totalPrice} />
         </div>
       </div>
       <Button
         className="w-full mt-6"
         // onClick={onCheckout}
-        //   disabled={items.length === 0}
+        disabled={items.length === 0}
       >
         Checkout
       </Button>

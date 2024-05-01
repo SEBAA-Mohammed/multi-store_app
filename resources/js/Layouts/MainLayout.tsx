@@ -4,6 +4,7 @@ import { Fragment, PropsWithChildren } from 'react';
 import { Footer } from '@/Components/Footer';
 import { Header } from '@/Components/Header';
 import { PreviewModal } from '@/Components/PreviewModal';
+import { Toaster } from '@/Components/ui/toaster';
 
 export function MainLayout({ title, children }: PropsWithChildren<{ title?: string }>) {
   return (
@@ -17,6 +18,8 @@ export function MainLayout({ title, children }: PropsWithChildren<{ title?: stri
       <Header />
 
       <main>{children}</main>
+
+      <Toaster />
 
       <Footer />
     </Fragment>

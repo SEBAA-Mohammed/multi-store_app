@@ -1,17 +1,19 @@
-import { Currency, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 import { IconButton } from '@/Components/ui/icon-button';
 import { Product } from '@/types';
+import { useCart } from '@/Contexts/CartContext';
+import { Currency } from '@/Components/ui/currency';
 
 interface CartItemProps {
   data: Product;
 }
 
 export function CartItem({ data }: CartItemProps) {
-  //   const cart = useCart();
+  const { removeItem } = useCart();
 
   const onRemove = () => {
-    // cart.removeItem(data.id);
+    removeItem(data.id);
   };
 
   return (
@@ -34,7 +36,7 @@ export function CartItem({ data }: CartItemProps) {
             <p className="text-gray-500">{data.brand?.name}</p>
             <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{data.unit?.name}</p>
           </div>
-          {/* <Currency value={data.price} /> */}
+          <Currency value={data.price} />
         </div>
       </div>
     </li>
