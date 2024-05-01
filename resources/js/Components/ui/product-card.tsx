@@ -5,23 +5,23 @@ import { Expand, ShoppingCart } from 'lucide-react';
 
 import { Currency } from '@/Components/ui/currency';
 import { IconButton } from '@/Components/ui/icon-button';
-// import usePreviewModal from "@/hooks/use-preview-modal";
 // import useCart from "@/hooks/use-cart";
 import { Product } from '@/types';
+import { usePreviewModal } from '@/Contexts/PreviewModalContext';
 
 interface ProductCard {
   data: Product;
 }
 
-export const ProductCard: React.FC<ProductCard> = ({ data }) => {
-  // const previewModal = usePreviewModal();
+export function ProductCard({ data }: ProductCard) {
+  const { onOpen } = usePreviewModal();
   // const cart = useCart();
   // const router = useRouter();
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
 
-    // previewModal.onOpen(data);
+    onOpen(data);
   };
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -63,4 +63,4 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
       </div>
     </div>
   );
-};
+}
