@@ -57,16 +57,6 @@ export interface ProductImage {
   url: string;
 }
 
-// export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-//   auth: {
-//     user: User;
-//   };
-//   current: {
-//     store: Store;
-//     categories: Category[];
-//   };
-// };
-
 export interface Auth {
   user: User;
 }

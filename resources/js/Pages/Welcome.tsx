@@ -1,13 +1,13 @@
 import { Link, Head } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
-import { PageProps } from '@/types';
+import { InertiaSharedProps } from '@/types';
 
 export default function Welcome({
   auth,
   laravelVersion,
   phpVersion,
-}: PageProps<{ laravelVersion: string; phpVersion: string }>) {
+}: InertiaSharedProps<{ laravelVersion: string; phpVersion: string }>) {
   return (
     <>
       <Head title="Welcome" />
