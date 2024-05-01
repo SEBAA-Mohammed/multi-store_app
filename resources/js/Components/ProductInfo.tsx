@@ -1,18 +1,21 @@
-import { Currency } from '@/Components/ui/currency';
-import { Product } from '@/types';
-import { Button } from '@/Components/ui/button';
 import { ShoppingCart } from 'lucide-react';
+
+import { Currency } from '@/Components/ui/currency';
+import { Button } from '@/Components/ui/button';
+import { useCart } from '@/Contexts/CartContext';
+import { Product } from '@/types';
 
 interface ProductInfoProps {
   data: Product;
 }
 
 export function ProductInfo({ data }: ProductInfoProps) {
-  // const cart = useCart();
+  const { addItem } = useCart();
 
-  // const onAddToCart = () => {
-  //   cart.addItem(data);
-  // }
+  const onAddToCart = () => {
+    addItem(data);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.designation}</h1>
@@ -31,10 +34,7 @@ export function ProductInfo({ data }: ProductInfoProps) {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button
-          className="flex items-center gap-x-2 whitespace-nowrap"
-          // onClick={onAddToCart}
-        >
+        <Button className="flex items-center gap-x-2 whitespace-nowrap" onClick={onAddToCart}>
           Add To Cart
           <ShoppingCart size={20} />
         </Button>
