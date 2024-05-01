@@ -3,7 +3,7 @@ import { router } from '@inertiajs/react';
 import { ShoppingBag } from 'lucide-react';
 
 import { CartButton } from '@/Components/ui/cart-button';
-import { useCart } from '@/Contexts/CartContext';
+import { useCart } from '@/Contexts/cart-context';
 
 export function NavbarActions() {
   const { items } = useCart();

@@ -1,7 +1,7 @@
 import { CartItem } from '@/Components/CartItem';
 import { Summary } from '@/Components/Summary';
 import { Container } from '@/Components/ui/container';
-import { useCart } from '@/Contexts/CartContext';
+import { useCart } from '@/Contexts/cart-context';
 import { MainLayout } from '@/Layouts/MainLayout';
 
 export default function Cart() {

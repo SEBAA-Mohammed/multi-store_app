@@ -2,7 +2,7 @@ import { X } from 'lucide-react';
 
 import { IconButton } from '@/Components/ui/icon-button';
 import { Product } from '@/types';
-import { useCart } from '@/Contexts/CartContext';
+import { useCart } from '@/Contexts/cart-context';
 import { Currency } from '@/Components/ui/currency';
 
 interface CartItemProps {

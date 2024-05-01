@@ -6,8 +6,8 @@ import { Expand, ShoppingCart } from 'lucide-react';
 import { Currency } from '@/Components/ui/currency';
 import { IconButton } from '@/Components/ui/icon-button';
 import { Product } from '@/types';
-import { usePreviewModal } from '@/Contexts/PreviewModalContext';
-import { useCart } from '@/Contexts/CartContext';
+import { usePreviewModal } from '@/Contexts/preview-modal-context';
+import { useCart } from '@/Contexts/cart-context';
 
 interface ProductCard {
   data: Product;

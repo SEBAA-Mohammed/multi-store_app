@@ -3,7 +3,7 @@
 
 import { Button } from '@/Components/ui/button';
 import { Currency } from '@/Components/ui/currency';
-import { useCart } from '@/Contexts/CartContext';
+import { useCart } from '@/Contexts/cart-context';
 import { useToast } from '@/Components/ui/use-toast';
 
 export function Summary() {
