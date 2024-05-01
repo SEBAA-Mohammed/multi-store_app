@@ -42,6 +42,7 @@ export interface Product {
   designation: string;
   prix_ht: number;
   tva: number;
+  price: number;
   description: string;
   stock: number;
   rating: number;
@@ -56,16 +57,6 @@ export interface ProductImage {
   id: number;
   url: string;
 }
-
-// export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-//   auth: {
-//     user: User;
-//   };
-//   current: {
-//     store: Store;
-//     categories: Category[];
-//   };
-// };
 
 export interface Auth {
   user: User;

@@ -1,23 +1,26 @@
-import { Currency } from '@/Components/ui/currency';
-import { Product } from '@/types';
-import { Button } from '@/Components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 
-interface ProductInfoProps {
+import { Currency } from '@/Components/ui/currency';
+import { Button } from '@/Components/ui/button';
+import { Product } from '@/types';
+// import useCart from "@/hooks/use-cart";
+
+interface InfoProps {
   data: Product;
 }
 
-export function ProductInfo({ data }: ProductInfoProps) {
-  // const cart = useCart();
+export function Info({ data }: InfoProps) {
+  //   const cart = useCart();
 
-  // const onAddToCart = () => {
-  //   cart.addItem(data);
-  // }
+  const onAddToCart = () => {
+    // cart.addItem(data);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.designation}</h1>
       <div className="mt-3 flex items-end justify-between">
-        <Currency className="text-2xl text-gray-900" value={data?.price} />
+        <Currency value={data?.price} className="text-2xl text-gray-900" />
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
@@ -31,10 +34,7 @@ export function ProductInfo({ data }: ProductInfoProps) {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button
-          className="flex items-center gap-x-2 whitespace-nowrap"
-          // onClick={onAddToCart}
-        >
+        <Button onClick={onAddToCart} className="flex items-center gap-x-2">
           Add To Cart
           <ShoppingCart size={20} />
         </Button>

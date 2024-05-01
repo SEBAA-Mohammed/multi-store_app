@@ -33,6 +33,7 @@ class ProductController extends Controller
         $suggestedProducts = $store->products()
             ->where('category_id', $categoryId)
             ->whereNot('id', $product->id)
+            ->limit(4)
             ->get();
 
         return ProductResource::collection($suggestedProducts);
