@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react';
 
 import { IconButton } from '@/Components/ui/icon-button';
 import { Button } from '@/Components/ui/button';
-import { Brand, Unit } from '@/types';
+import { Brand } from '@/types';
 
 import { Filter } from '@/Components/filter';
 

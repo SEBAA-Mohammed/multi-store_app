@@ -1,20 +1,20 @@
 import { Billboard } from '@/Components/Billboard';
 import { Filter } from '@/Components/filter';
-import { MobileFilters } from '@/Components/mobile-filter';
+import { MobileFilters } from '@/Components/MobileFilter';
 import { Container } from '@/Components/ui/container';
 import { NoResults } from '@/Components/ui/no-result';
 import { ProductCard } from '@/Components/ui/product-card';
 import { MainLayout } from '@/Layouts/MainLayout';
-import { Category as ICategory, Product, Brand, Unit } from '@/types';
+import { Category as ICategory, Product, Brand } from '@/types';
 
 interface CategoryProps {
   products: Product[];
   category: ICategory;
   brands: Brand[];
-  units: Unit[];
+  // units: Unit[];
 }
 
-export default function Category({ category, products, brands, units }: CategoryProps) {
+export default function Category({ category, products, brands }: CategoryProps) {
   return (
     <div className="bg-white">
       <Container>
