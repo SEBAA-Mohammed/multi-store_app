@@ -1,7 +1,7 @@
 import { Gallery } from '@/Components/gallery';
 import { Info } from '@/Components/Info';
 import { Modal } from '@/Components/ui/modal';
-import { usePreviewModal } from '@/Contexts/PreviewModalContext';
+import { usePreviewModal } from '@/Contexts/preview-modal-context';
 
 export function PreviewModal() {
   const { selectedProduct, isOpen, onClose } = usePreviewModal();

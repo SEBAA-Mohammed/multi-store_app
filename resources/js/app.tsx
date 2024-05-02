@@ -5,7 +5,8 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-import { PreviewModalProvider } from '@/Contexts/PreviewModalContext';
+import { PreviewModalProvider } from '@/Contexts/preview-modal-context';
+import { CartProvider } from '@/Contexts/cart-context';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -17,9 +18,11 @@ createInertiaApp({
     const root = createRoot(el);
 
     root.render(
-      <PreviewModalProvider>
-        <App {...props} />
-      </PreviewModalProvider>,
+      <CartProvider>
+        <PreviewModalProvider>
+          <App {...props} />
+        </PreviewModalProvider>
+      </CartProvider>,
     );
   },
   progress: {
