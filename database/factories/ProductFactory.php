@@ -29,9 +29,9 @@ class ProductFactory extends Factory
             'stock' => fake()->numberBetween(0, 5000),
             'rating' => fake()->numberBetween(1, 5),
             'store_id' => $store->id,
-            'category_id' => $store->categories()->inRandomOrder()->first()->id,
-            'brand_id' => $store->brands()->inRandomOrder()->first()->id,
-            'unit_id' => $store->units()->inRandomOrder()->first()->id,
+            'category_id' => $store->categories()->inRandomOrder()->first()->id ?? null,
+            'brand_id' => $store->brands()->inRandomOrder()->first()->id ?? null,
+            'unit_id' => $store->units()->inRandomOrder()->first()->id ?? null,
             'created_at' => now(),
             'updated_at' => now(),
         ];

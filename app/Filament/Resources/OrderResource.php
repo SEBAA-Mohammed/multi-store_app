@@ -60,7 +60,7 @@ class OrderResource extends Resource
                             ->color('danger')
                             ->action(fn (Forms\Set $set) => $set('items', [])),
                     ])
-                    ->columnSpan('full') // Set the column span to full width
+                    ->columnSpan('full')
                     ->schema([
                         static::getItemsRepeater(),
                     ]),
