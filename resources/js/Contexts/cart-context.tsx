@@ -1,7 +1,8 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
+import { ReactNode, createContext, useContext } from 'react';
 
 import { useToast } from '@/Components/ui/use-toast';
 import { Product } from '@/types';
+import useLocalStorage from '@/Hooks/local-storage';
 
 interface CartContextType {
   items: Product[];
@@ -21,7 +22,8 @@ export const useCart = () => {
 };
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<Product[]>([]);
+  const [items, setItems] = useLocalStorage<Product[]>('cart-items', []);
+
   const { toast } = useToast();
 
   const addItem = (data: Product) => {
