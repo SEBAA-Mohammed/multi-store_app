@@ -4,16 +4,16 @@ import { Dialog } from '@headlessui/react';
 
 import { IconButton } from '@/Components/ui/icon-button';
 import { Button } from '@/Components/ui/button';
-import { Brand, Unit } from '@/types';
+import { Brand } from '@/types';
 
 import { Filter } from '@/Components/filter';
 
 interface MobileFiltersProps {
   brands: Brand[];
-  units: Unit[];
+  // units: Unit[];
 }
 
-export const MobileFilters: React.FC<MobileFiltersProps> = ({ brands, units }) => {
+export const MobileFilters: React.FC<MobileFiltersProps> = ({ brands }) => {
   const [open, setOpen] = useState(false);
 
   const onOpen = () => setOpen(true);
@@ -40,7 +40,7 @@ export const MobileFilters: React.FC<MobileFiltersProps> = ({ brands, units }) =
 
             <div className="p-4">
               <Filter queryKey="brand" name="Brands" data={brands} />
-              <Filter queryKey="unit" name="Units" data={units} />
+              {/* <Filter queryKey="unit" name="Units" data={units} /> */}
             </div>
           </Dialog.Panel>
         </div>

@@ -3,6 +3,7 @@ import { ShoppingCart } from 'lucide-react';
 import { Currency } from '@/Components/ui/currency';
 import { Button } from '@/Components/ui/button';
 import { useCart } from '@/Contexts/cart-context';
+import { Rating } from '@/Components/Rating';
 import { Product } from '@/types';
 
 interface ProductInfoProps {
@@ -24,6 +25,7 @@ export function ProductInfo({ data }: ProductInfoProps) {
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
+        <p className="text-black">{data?.description}</p>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Brand:</h3>
           <div>{data?.brand?.name}</div>
@@ -31,6 +33,12 @@ export function ProductInfo({ data }: ProductInfoProps) {
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Unit:</h3>
           <div>{data?.unit?.name}</div>
+        </div>
+        <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold text-black">Rating:</h3>
+          <div>
+            <Rating value={data?.rating} />
+          </div>
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">

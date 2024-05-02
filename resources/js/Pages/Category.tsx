@@ -1,30 +1,30 @@
 import { Billboard } from '@/Components/Billboard';
 import { Filter } from '@/Components/filter';
-import { MobileFilters } from '@/Components/mobile-filter';
+import { MobileFilters } from '@/Components/MobileFilter';
 import { Container } from '@/Components/ui/container';
 import { NoResults } from '@/Components/ui/no-result';
 import { ProductCard } from '@/Components/ui/product-card';
 import { MainLayout } from '@/Layouts/MainLayout';
-import { Category as ICategory, Product, Brand, Unit } from '@/types';
+import { Category as ICategory, Product, Brand } from '@/types';
 
 interface CategoryProps {
   products: Product[];
   category: ICategory;
   brands: Brand[];
-  units: Unit[];
+  // units: Unit[];
 }
 
-export default function Category({ category, products, brands, units }: CategoryProps) {
+export default function Category({ category, products, brands }: CategoryProps) {
   return (
     <div className="bg-white">
       <Container>
         <Billboard url={category.url} />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters brands={brands} units={units} />
+            <MobileFilters brands={brands} />
             <div className="hidden lg:block">
               <Filter name="Brands" queryKey="brand" data={brands} />
-              <Filter name="Units" queryKey="unit" data={units} />
+              {/* <Filter name="Units" queryKey="unit" data={units} /> */}
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
