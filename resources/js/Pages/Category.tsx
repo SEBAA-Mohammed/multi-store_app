@@ -21,10 +21,10 @@ export default function Category({ category, products, brands, units }: Category
         <Billboard url={category.url} />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters brands={brands} units={units} />
+            <MobileFilters brands={brands} />
             <div className="hidden lg:block">
               <Filter name="Brands" queryKey="brand" data={brands} />
-              <Filter name="Units" queryKey="unit" data={units} />
+              {/* <Filter name="Units" queryKey="unit" data={units} /> */}
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
