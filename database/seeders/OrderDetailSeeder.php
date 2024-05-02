@@ -16,7 +16,7 @@ class OrderDetailSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 200) as $index) {
             DB::table('order_details')->insert([
                 'order_id' => $faker->numberBetween(1, 3),
                 'product_id' => $faker->numberBetween(1, 3),

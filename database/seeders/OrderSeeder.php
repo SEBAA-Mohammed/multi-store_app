@@ -17,7 +17,7 @@ class OrderSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 50) as $index) {
             DB::table('orders')->insert([
                 'is_paid' => $faker->boolean,
                 'adresse_livraison' => $faker->text(),
