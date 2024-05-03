@@ -36,6 +36,20 @@ class OrdersChart extends ChartWidget
         ];
     }
 
+    protected function getOptions(): array
+    {
+        return [
+            'scales' => [
+                'y' => [
+                    'beginAtZero' => true,
+                    'ticks' => [
+                        'stepSize' => 1, // Display only whole numbers
+                    ],
+                ],
+            ],
+        ];
+    }
+
     protected function getType(): string
     {
         return 'line';
