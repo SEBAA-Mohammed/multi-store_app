@@ -15,25 +15,38 @@ class CustomersChart extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Trend::model(Order::class)
-            // ->groupBy('user_id')
-            ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
-            )
-            ->perMonth()
-            ->count('user_id');
+        $data = Order::query()
+            ->selectRaw('strftime("%Y-%m", created_at) as month, COUNT(DISTINCT user_id) as count')
+            ->groupBy('month')
+            ->get();
 
         return [
             'datasets' => [
                 [
                     'label' => 'Number of customers',
-                    'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'data' => $data->pluck('count'),
                 ],
             ],
-            'labels' => $data->map(fn (TrendValue $value) => $value->date),
+            'labels' => $data->pluck('month'),
         ];
     }
+
+
+    protected function getOptions(): array
+    {
+        return [
+            'scales' => [
+                'y' => [
+                    'beginAtZero' => true,
+                    'ticks' => [
+                        'stepSize' => 1, // Display only whole numbers
+                    ],
+                ],
+            ],
+        ];
+    }
+
+
 
 
     protected function getType(): string
