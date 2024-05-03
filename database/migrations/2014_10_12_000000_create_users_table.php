@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('name');
-            $table->string('adresse');
-            $table->string('ville');
-            $table->string('tel');
+            $table->string('adresse')->nullable();
+            $table->string('ville')->nullable();
+            $table->string('tel')->nullable();
             $table->string('role')->default(Role::CLIENT);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

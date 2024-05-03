@@ -21,6 +21,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -30,6 +31,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -38,17 +41,22 @@ class UserResource extends Resource
                     ->required(),
                 TextInput::make('username')
                     ->required(),
-                TextInput::make('role')
+                Select::make('role')
+                    ->options([
+                        'admin' => 'Admin',
+                        'client' => 'Client',
+                    ])
                     ->required(),
                 TextInput::make('email')
                     ->email()
                     ->required(),
-                DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->required()
+                    ->hiddenOn('edit'),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
