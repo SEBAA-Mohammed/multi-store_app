@@ -19,7 +19,7 @@ class RatingSeeder extends Seeder
 
         foreach (range(1, 10) as $index) {
             DB::table('ratings')->insert([
-                'note' => $faker->randomFloat(2, 1, 100),
+                'note' => $faker->randomFloat(2, 1, 5),
                 'user_id' => $faker->numberBetween(1, 3),
                 'product_id' => $faker->numberBetween(1, 3),
                 'store_id' => Store::where('slug', 'store-1')->first()->id,
