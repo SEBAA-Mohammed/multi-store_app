@@ -29,7 +29,7 @@ export function Rating({
   isHalf = true,
   onChange,
   emptyIcon = <Star size={4} />,
-  halfIcon = <StarHalf />,
+  halfIcon = <StarHalf fill="#ffc107"/>,
   fullIcon = <Star fill="#ffc107" />,
 }: RatingProps) {
   const [hoverValue, setHoverValue] = useState<number | undefined>(undefined);
