@@ -69,6 +69,7 @@ class UserResource extends Resource
                     ->badge(),
                 TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('stores_count')->counts('stores')->label('Number of Stores'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
