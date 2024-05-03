@@ -19,9 +19,9 @@ class UnitResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
-    protected static ?string $navigationGroup = 'Products Management';
+    protected static ?string $navigationGroup = 'Store Management';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
 
     public static function form(Form $form): Form

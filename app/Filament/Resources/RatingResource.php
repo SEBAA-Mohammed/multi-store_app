@@ -21,7 +21,7 @@ class RatingResource extends Resource
 
     protected static ?string $navigationGroup = 'Sells Management';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 6;
 
     public static function canCreate(): bool
     {

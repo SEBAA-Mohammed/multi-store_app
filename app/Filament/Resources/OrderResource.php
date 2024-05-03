@@ -27,7 +27,7 @@ class OrderResource extends Resource
 
     protected static ?string $navigationGroup = 'Sells Management';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 5;
 
     public static function canCreate(): bool
     {
