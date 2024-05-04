@@ -27,7 +27,7 @@ class StoreResource extends Resource
 {
     protected static ?string $model = Store::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
 
     protected static ?string $navigationGroup = 'َApp Management';
 
@@ -37,9 +37,33 @@ class StoreResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('user_id')
+                    ->label('User')
+                    ->relationship('members', 'name')
+                    ->required()
+                    ->hiddenOn('edit'),
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('email')
+                    ->email()
+                    ->required(),
+                TextInput::make('tel')
+                    ->required(),
+                TextInput::make('adresse')
+                    ->required(),
+                Forms\Components\Select::make('store_category_id')
+                    ->label('Category')
+                    ->relationship('storeCategory', 'name')
+                    ->required(),
+                TextInput::make('header')
+                    ->required(),
                 TextInput::make('slug')
+                    ->required(),
+                Forms\Components\FileUpload::make('logo_url')
+                    ->image()
+                    ->required(),
+                Forms\Components\FileUpload::make('billboard_url')
+                    ->image()
                     ->required(),
             ]);
     }
@@ -52,7 +76,16 @@ class StoreResource extends Resource
                     ->label('ID')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('logo_url')
+                    ->label('Logo')
+                    ->circular(),
                 TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('email')
+                    ->searchable(),
+                TextColumn::make('tel')
+                    ->searchable(),
+                TextColumn::make('adresse')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
