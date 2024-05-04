@@ -123,7 +123,7 @@ class ProductResource extends Resource
         return Repeater::make('images')
             ->relationship()
             ->schema([
-                Forms\Components\FileUpload::make('image_url')
+                Forms\Components\FileUpload::make('url')
                     ->image()
                     ->required(),
             ]);

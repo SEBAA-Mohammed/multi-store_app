@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -21,6 +22,8 @@ Route::scopeBindings()->prefix('/{user}/{store}')->group(function () {
     Route::get('/category/{category}', CategoryController::class)->name('category');
 
     Route::get('/cart', CartController::class)->name('cart');
+
+    Route::get('/checkout', CheckoutController::class)->name('checkout');
 });
 
 require __DIR__ . '/auth.php';

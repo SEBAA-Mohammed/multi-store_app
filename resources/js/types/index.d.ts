@@ -46,6 +46,8 @@ export interface Product {
   description: string;
   stock: number;
   rating: number;
+  product_id?: string;
+  price_id?: string;
   images: ProductImage[];
   category: Category;
   brand?: Brand;

@@ -24,7 +24,7 @@ class CreateProductOnPaddle
     public function handle(ProductAdded $event): void
     {
         // Create product
-        $responseProduct = Http::withToken(env('PADDLE_API_KEY'))
+        $responseProduct = Http::withToken(config('services.paddle.api_key'))
             ->post('https://sandbox-api.paddle.com/products', [
                 'name' => $event->product->designation,
                 'description' => $event->product->description,
@@ -40,7 +40,7 @@ class CreateProductOnPaddle
                 ->update(['paddle_product_id' => $productId]);
 
             // Create price
-            $responsePrice = Http::withToken(env('PADDLE_API_KEY'))
+            $responsePrice = Http::withToken(config('services.paddle.api_key'))
                 ->post('https://sandbox-api.paddle.com/prices', [
                     'description' => $event->product->description,
                     'product_id' => $productId,
