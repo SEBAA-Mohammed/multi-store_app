@@ -12,6 +12,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\ViewLink;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -22,6 +23,8 @@ use App\Filament\Manager\Resources\StoreResource\Pages\ViewStore;
 use App\Filament\Manager\Resources\StoreResource\Pages\ListStores;
 use App\Filament\Manager\Resources\StoreResource\RelationManagers;
 use App\Filament\Manager\Resources\StoreResource\Pages\CreateStore;
+use Filament\Tables\Actions\Action;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class StoreResource extends Resource
 {
@@ -104,6 +107,13 @@ class StoreResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
+                Action::make('open_store')
+                    ->label('Open Store')
+                    ->url(
+                        fn (Store $record): string =>
+                        asset($record::getStoreUrl())
+                    )
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
