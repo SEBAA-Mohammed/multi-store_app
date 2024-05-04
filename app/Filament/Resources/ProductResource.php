@@ -28,7 +28,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Product informations')
+                Forms\Components\Section::make('Product information')
                     ->schema([
                         Forms\Components\Select::make('category_id')
                             ->label('Category')
@@ -82,7 +82,6 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('tva')
                     ->numeric()
                     ->sortable(),
-
                 Tables\Columns\TextColumn::make('stock')
                     ->numeric()
                     ->sortable(),
@@ -129,8 +128,6 @@ class ProductResource extends Resource
                     ->required(),
             ]);
     }
-
-
 
     public static function getRelations(): array
     {

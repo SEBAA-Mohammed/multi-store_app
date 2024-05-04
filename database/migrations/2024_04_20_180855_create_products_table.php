@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('stock');
             $table->double('rating');
             $table->string('paddle_product_id')->nullable();
+            $table->string('paddle_price_id')->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('unit_id')->constrained()->cascadeOnDelete();

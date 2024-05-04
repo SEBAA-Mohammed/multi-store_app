@@ -23,6 +23,7 @@ class Product extends Model
         'brand_id',
         'unit_id',
         'paddle_product_id',
+        'paddle_price_id',
         'store_id'
     ];
 
@@ -59,5 +60,10 @@ class Product extends Model
     public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function getPriceTTC(): float
+    {
+        return round($this->prix_ht * (1 + $this->tva), 2);
     }
 }
