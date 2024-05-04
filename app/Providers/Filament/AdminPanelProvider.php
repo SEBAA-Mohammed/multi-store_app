@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Register;
 use App\Filament\Pages\Tenancy\RegisterStore;
 use App\Filament\Pages\Tenancy\EditStorePage;
 use App\Models\Store;
@@ -32,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,

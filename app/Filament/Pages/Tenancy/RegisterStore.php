@@ -7,6 +7,7 @@ use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Illuminate\Support\Str;
 use App\Rules\UniqueStoreSlugPerUser;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Tenancy\RegisterTenant;
 
@@ -31,6 +32,9 @@ class RegisterStore extends RegisterTenant
                     ->rules([new UniqueStoreSlugPerUser(auth()->user())])
                     ->maxLength(255)
                     ->prefix(url('/') . '/' . auth()->user()->username . '/'),
+                Select::make('store_category_id')
+                    ->relationship(name: 'storeCategory', titleAttribute: 'name')
+                    ->required()
             ]);
     }
 

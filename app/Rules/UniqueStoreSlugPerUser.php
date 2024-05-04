@@ -9,6 +9,16 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class UniqueStoreSlugPerUser implements ValidationRule
 {
     /**
+     * Create a new rule instance.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function __construct(protected User $user)
+    {
+    }
+
+    /**
      * Run the validation rule.
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
