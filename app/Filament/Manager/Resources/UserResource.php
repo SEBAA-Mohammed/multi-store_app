@@ -9,6 +9,7 @@ use App\Filament\Manager\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Manager\Resources\UserResource\Pages\ViewUser;
 use App\Filament\Manager\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Filament\Infolists\Infolist;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
@@ -23,6 +24,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\Select;
+use Filament\Infolists;
+use Filament\Infolists\Components\RepeatableEntry;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -101,12 +104,37 @@ class UserResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Infolists\Components\Section::make('User Informations')
+                    ->schema([
+                        Infolists\Components\TextEntry::make('name')->label('Name'),
+                        Infolists\Components\TextEntry::make('role')->label('Role'),
+                        Infolists\Components\TextEntry::make('email')->label('Email '),
+                    ]),
+
+                Infolists\Components\Section::make('Stores')
+                    ->schema([
+                        RepeatableEntry::make('stores')
+                            ->schema([
+                                Infolists\Components\TextEntry::make('name'),
+                                Infolists\Components\ImageEntry::make('logo_url')->label('Logo'),
+                            ])->grid(2)
+                    ])
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
+
+
+
 
     public static function getPages(): array
     {
