@@ -21,6 +21,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -74,6 +75,9 @@ class UserResource extends Resource
                 TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('stores_count')->counts('stores')->label('Number of Stores'),
+                ImageColumn::make('stores.logo_url')
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
