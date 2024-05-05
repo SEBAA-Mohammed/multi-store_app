@@ -27,8 +27,14 @@ class ManagerPanelProvider extends PanelProvider
             ->login()
             ->path('manager')
             ->colors([
-                'primary' => Color::Red,
+                'danger' => Color::Red,
+                'gray' => Color::Slate,
+                'info' => Color::Blue,
+                'primary' => Color::Emerald,
+                'success' => Color::Indigo,
+                'warning' => Color::Orange,
             ])
+            ->font('Poppins')
             ->discoverResources(in: app_path('Filament/Manager/Resources'), for: 'App\\Filament\\Manager\\Resources')
             ->discoverPages(in: app_path('Filament/Manager/Pages'), for: 'App\\Filament\\Manager\\Pages')
             ->pages([
