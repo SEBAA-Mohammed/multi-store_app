@@ -64,6 +64,11 @@ export interface Auth {
   user: User;
 }
 
+export interface CheckoutEvent {
+  status: 'failed' | 'completed';
+  message?: string;
+}
+
 export type InertiaSharedProps<T = {}> = T & {
   auth: Auth;
   current: {

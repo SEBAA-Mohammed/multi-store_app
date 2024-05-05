@@ -12,7 +12,7 @@ export const formatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
-export function checkIfProductsAreValid(products: Product[]): boolean {
+export function isAbleToCheckout(products: Product[]): boolean {
   if (products.length === 0) return true;
 
   return products.some(({ product_id, price_id }) => {

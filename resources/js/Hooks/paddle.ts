@@ -1,45 +1,62 @@
-import { Paddle, initializePaddle } from '@paddle/paddle-js';
+import { Paddle, initializePaddle, Environments } from '@paddle/paddle-js';
 import { useEffect, useState } from 'react';
-import { useTypedPage } from './typed-page';
+import { route } from 'ziggy-js';
+
+import { CheckoutEvent, Product } from '@/types';
+
+// export enum CheckoutEventNames {
+//   CHECKOUT_LOADED = 'checkout.loaded',
+//   CHECKOUT_CLOSED = 'checkout.closed',
+//   CHECKOUT_UPDATED = 'checkout.updated',
+//   CHECKOUT_COMPLETED = 'checkout.completed',
+//   CHECKOUT_ERROR = 'checkout.error',
+//   CHECKOUT_FAILED = 'checkout.failed',
+// }
+
+// export enum CheckoutEventsStatus {
+//   DRAFT = 'draft',
+//   READY = 'ready',
+//   COMPLETED = 'completed',
+//   BILLED = 'billed',
+//   canceled = 'canceled',
+//   PAST_DUE = 'past_due',
+// }
 
 export function usePaddle() {
   const [paddle, setPaddle] = useState<Paddle>();
-  const { auth } = useTypedPage();
+  const [checkoutProcessEvent, setCheckoutProcessEvent] = useState<CheckoutEvent>();
 
   useEffect(() => {
     initializePaddle({
-      environment: process.env.VITE_PADDLE_ENV,
-      token: process.env.VITE_PADDLE_CLIENT_SIDE_TOKEN!,
+      environment: import.meta.env.VITE_PADDLE_ENV as Environments,
+      token: import.meta.env.VITE_PADDLE_CLIENT_SIDE_TOKEN!,
+      eventCallback: function (data) {
+        if (data.name || 'checkout.error' || 'checkout.failed') {
+          setCheckoutProcessEvent({ status: 'failed', message: data.detail });
+        }
+        if (data.name || 'checkout.completed') {
+          setCheckoutProcessEvent({ status: 'completed' });
+        }
+      },
     }).then((paddleInstance: Paddle | undefined) => {
       if (paddleInstance) {
         setPaddle(paddleInstance);
       }
     });
-  }, []);
+  }, [import.meta.env.VITE_PADDLE_ENV, import.meta.env.VITE_PADDLE_CLIENT_SIDE_TOKEN]);
 
-  async function openCheckout(priceId: string) {
-    const { user } = auth;
-
-    if (!user?.id) {
-      console.error('User not found');
-      return;
-    }
+  async function openCheckout(products: Product[]) {
+    const priceIds = products.map((product) => ({ priceId: product.price_id || '' }));
 
     paddle?.Checkout.open({
       settings: {
         allowedPaymentMethods: ['paypal', 'apple_pay', 'google_pay', 'card'],
         theme: 'light',
-        successUrl: `${window.location.origin}/plans?success=Success Message`,
+        successUrl: route('cart', { _query: { success: true } }),
       },
-      items: [{ priceId, quantity: 1 }],
-      customer: {
-        email: user?.email ?? '',
-      },
-      customData: {
-        user_id: user.id,
-      },
+      items: priceIds,
     });
   }
 
-  return { openCheckout };
+  return { openCheckout, checkoutProcessEvent };
 }
