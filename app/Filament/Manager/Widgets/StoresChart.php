@@ -23,7 +23,7 @@ class StoresChart extends ChartWidget
                 end: now()->endOfYear(),
             )
             ->perMonth()
-            ->count('id');
+            ->count();
 
         return [
             'datasets' => [
