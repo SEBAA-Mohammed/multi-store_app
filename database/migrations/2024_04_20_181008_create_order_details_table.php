@@ -18,7 +18,6 @@ return new class extends Migration
             $table->double('prix_achat');
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

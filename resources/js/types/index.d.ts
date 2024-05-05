@@ -65,7 +65,7 @@ export interface Auth {
 }
 
 export interface CheckoutEvent {
-  status: 'failed' | 'completed';
+  status: 'initialized' | 'failed' | 'completed';
   message?: string;
 }
 

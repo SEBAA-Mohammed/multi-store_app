@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
                 'adresse_livraison' => $faker->text(),
                 'payment_method_id' => $faker->numberBetween(1, 3),
                 'user_id' => $faker->numberBetween(1, 3),
-                'status_id' => $faker->numberBetween(1, 3),
+                'status_id' => $faker->numberBetween(1, 5),
                 'store_id' => Store::where('slug', 'store-1')->first()->id,
                 'created_at' => $faker->dateTimeBetween(date('2024-01-01'), date('2024-12-30')),
             ]);

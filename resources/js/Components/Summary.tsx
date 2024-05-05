@@ -1,4 +1,5 @@
 import { router } from '@inertiajs/react';
+import { useEffect } from 'react';
 import { route } from 'ziggy-js';
 
 import { Button } from '@/Components/ui/button';
@@ -7,18 +8,20 @@ import { useCart } from '@/Contexts/cart-context';
 import { useToast } from '@/Components/ui/use-toast';
 import { isAbleToCheckout } from '@/lib/utils';
 import { usePaddle } from '@/Hooks/paddle';
-import { useEffect } from 'react';
 
 export function Summary() {
-  //   const searchParams = useSearchParams();
   const { items, removeAll } = useCart();
   const { toast } = useToast();
   const { openCheckout, checkoutProcessEvent } = usePaddle();
 
   useEffect(() => {
+    if (checkoutProcessEvent?.status === 'initialized') {
+      router.visit(route('checkout', { status: checkoutProcessEvent?.status }));
+    }
+
     if (checkoutProcessEvent?.status === 'completed') {
       toast({ title: 'Success', description: 'Payment completed ✅.' });
-      removeAll();
+      // removeAll();
     }
 
     if (checkoutProcessEvent?.status === 'failed') {

@@ -31,10 +31,13 @@ export function usePaddle() {
       environment: import.meta.env.VITE_PADDLE_ENV as Environments,
       token: import.meta.env.VITE_PADDLE_CLIENT_SIDE_TOKEN!,
       eventCallback: function (data) {
-        if (data.name || 'checkout.error' || 'checkout.failed') {
+        if (data.name === 'checkout.loaded') {
+          setCheckoutProcessEvent({ status: 'initialized' });
+        }
+        if (data.name === 'checkout.error' || data.name === 'checkout.failed') {
           setCheckoutProcessEvent({ status: 'failed', message: data.detail });
         }
-        if (data.name || 'checkout.completed') {
+        if (data.name === 'checkout.completed') {
           setCheckoutProcessEvent({ status: 'completed' });
         }
       },

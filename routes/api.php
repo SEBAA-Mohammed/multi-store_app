@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Models\Store;
 use App\Models\User;
@@ -14,6 +15,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return response()->json(['products' => $store->products]);
 // });
 
-Route::scopeBindings()->group(function () {
-    Route::get('/{user:username}/{store:slug}', ProductController::class);
-});
+// Route::scopeBindings()->prefix('/{user}/{store}')->group(function () {
+//     Route::get('/checkout', CheckoutController::class)->name('checkout');
+// });
