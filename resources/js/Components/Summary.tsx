@@ -52,7 +52,7 @@ export function Summary() {
         <Button
           className="w-full mt-6"
           disabled={isAbleToCheckout(items, auth.isLoggedIn)}
-          onClick={() => openCheckout(items)}
+          onClick={() => openCheckout(auth.user, items)}
         >
           Checkout
         </Button>

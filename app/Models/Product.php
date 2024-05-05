@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -62,8 +63,8 @@ class Product extends Model
         return $this->belongsTo(Store::class);
     }
 
-    public function getPriceTTC(): float
+    public function getPriceTTC(): int
     {
-        return round($this->prix_ht * (1 + $this->tva), 2);
+        return (int) round($this->prix_ht * (1 + $this->tva), 0);
     }
 }

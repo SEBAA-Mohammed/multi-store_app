@@ -2,7 +2,7 @@ import { Paddle, initializePaddle, Environments } from '@paddle/paddle-js';
 import { useEffect, useState } from 'react';
 import { route } from 'ziggy-js';
 
-import { CheckoutEvent, Product } from '@/types';
+import { CheckoutEvent, Product, User } from '@/types';
 
 // export enum CheckoutEventNames {
 //   CHECKOUT_LOADED = 'checkout.loaded',
@@ -48,7 +48,7 @@ export function usePaddle() {
     });
   }, [import.meta.env.VITE_PADDLE_ENV, import.meta.env.VITE_PADDLE_CLIENT_SIDE_TOKEN]);
 
-  async function openCheckout(products: Product[]) {
+  async function openCheckout(user: User, products: Product[]) {
     const priceIds = products.map((product) => ({ priceId: product.price_id || '' }));
 
     paddle?.Checkout.open({
@@ -58,6 +58,10 @@ export function usePaddle() {
         successUrl: route('cart', { _query: { success: true } }),
       },
       items: priceIds,
+      customer: {
+        email: user.email,
+        address: { city: user.ville, countryCode: 'MA', postalCode: user.postal_code },
+      },
     });
   }
 
