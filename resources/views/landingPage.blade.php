@@ -46,21 +46,14 @@
                 id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
                     <li class="mr-3">
-                        <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Active</a>
+                        <a class="inline-block py-2 px-4 text-black font-bold no-underline"
+                            href="http://localhost:8000">Home</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                            href="#">link</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                            href="#">link</a>
+                            href="http://localhost:8000/about">About Us</a>
                     </li>
                 </ul>
-                <button id="navAction"
-                    class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                    Action
-                </button>
             </div>
         </div>
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
@@ -78,15 +71,18 @@
                     Create your account now and build your stores
                 </p>
                 <div class="flex">
-                    <button
-                        class="mr-4 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    <a href="http://localhost:8000/admin/register"
+                        class="mr-4 inline-block hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Create an Account
-                    </button>
-                    <button
-                        class="hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    </a>
+                    <a href="http://localhost:8000/admin/login"
+                        class="inline-block hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                         Login
-                    </button>
+                    </a>
                 </div>
+
+
+
             </div>
 
             <!-- Right Col -->
@@ -123,7 +119,7 @@
     <section class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Title
+                What you will get
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -131,19 +127,14 @@
             <div class="flex flex-wrap">
                 <div class="w-5/6 sm:w-1/2 p-6">
                     <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                        Lorem ipsum dolor sit amet
+                        Your Own Customizable Store
                     </h3>
                     <p class="text-gray-600 mb-8">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
-                        posuere et sit amet ligula.
-                        <br />
-                        <br />
-
-                        Images from:
-
-                        <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+                        You can add your own products, customize your menu, configure your statuses, add brands, units,
+                        categories, and more.
                     </p>
                 </div>
+
                 <div class="w-full sm:w-1/2 p-6">
                     <svg class="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
                         <title>travel booking</title>
@@ -371,18 +362,14 @@
                 <div class="w-full sm:w-1/2 p-6 mt-6">
                     <div class="align-middle">
                         <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                            Lorem ipsum dolor sit amet
+                            Global Payment Solutions
                         </h3>
                         <p class="text-gray-600 mb-8">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
-                            posuere et sit amet ligula.
-                            <br />
-                            <br />
-                            Images from:
-
-                            <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+                            With our partnership with Paddle, you can securely accept payments from customers worldwide,
+                            eliminating any concerns about payment issues from unfamiliar regions.
                         </p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -390,84 +377,50 @@
     <section class="bg-white border-b py-8">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Title
+                Client Feedback
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow p-8">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
-                        <div class="w-full font-bold text-xl text-gray-800 px-6">
-                            Lorem ipsum dolor sit amet.
+                        <div class="w-full font-bold text-xl text-gray-800 mb-4">
+                            Jane Doe
                         </div>
-                        <p class="text-gray-800 text-base px-6 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
-                            posuere et sit amet ligula.
+                        <p class="w-full text-gray-600 text-xs md:text-sm">
+                            "Impressed with the simplicity and effectiveness of the platform."
                         </p>
                     </a>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="flex items-center justify-start">
-                        <button
-                            class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Action
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow p-8">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
-                        <div class="w-full font-bold text-xl text-gray-800 px-6">
-                            Lorem ipsum dolor sit amet.
+                        <div class="w-full font-bold text-xl text-gray-800 mb-4">
+                            John Smith
                         </div>
-                        <p class="text-gray-800 text-base px-6 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
-                            posuere et sit amet ligula.
+                        <p class="w-full text-gray-600 text-xs md:text-sm">
+                            "The customization options are fantastic!"
                         </p>
                     </a>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="flex items-center justify-center">
-                        <button
-                            class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Action
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow p-8">
                     <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                        <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                            xGETTING STARTED
-                        </p>
-                        <div class="w-full font-bold text-xl text-gray-800 px-6">
-                            Lorem ipsum dolor sit amet.
+                        <div class="w-full font-bold text-xl text-gray-800 mb-4">
+                            Emily Johnson
                         </div>
-                        <p class="text-gray-800 text-base px-6 mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
-                            posuere et sit amet ligula.
+                        <p class="w-full text-gray-600 text-xs md:text-sm">
+                            "Highly recommend this service to anyone looking for a reliable platform."
                         </p>
                     </a>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="flex items-center justify-end">
-                        <button
-                            class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Action
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
+
+
     </section>
     <section class="bg-gray-100 py-8">
         <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
@@ -484,9 +437,9 @@
                             Free
                         </div>
                         <ul class="w-full text-center text-sm">
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
+                            <li class="border-b py-4">Create One Store </li>
+                            <li class="border-b py-4">Up to 50 products</li>
+                            <li class="border-b py-4">Up to 3 categories menu</li>
                         </ul>
                     </div>
                     <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -508,15 +461,14 @@
                         <div class="w-full p-8 text-3xl font-bold text-center">Basic</div>
                         <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
                         <ul class="w-full text-center text-base font-bold">
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
+                            <li class="border-b py-4">Create three Stores </li>
+                            <li class="border-b py-4">Up to 100 products per store</li>
+                            <li class="border-b py-4">Up to 5 categories menu per store</li>
                         </ul>
                     </div>
                     <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                         <div class="w-full pt-6 text-4xl font-bold text-center">
-                            £x.99
+                            £4.99
                             <span class="text-base">/ per user</span>
                         </div>
                         <div class="flex items-center justify-center">
@@ -533,14 +485,14 @@
                             Pro
                         </div>
                         <ul class="w-full text-center text-sm">
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
-                            <li class="border-b py-4">Thing</li>
+                            <li class="border-b py-4">Create as many stores as you want </li>
+                            <li class="border-b py-4">as many products as you want</li>
+                            <li class="border-b py-4">as many categories as you want</li>
                         </ul>
                     </div>
                     <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                         <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">
-                            £x.99
+                            £9.99
                             <span class="text-base">/ per user</span>
                         </div>
                         <div class="flex items-center justify-center">
@@ -583,107 +535,22 @@
     </svg>
     <section class="container mx-auto text-center py-6 mb-12">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-            Call to Action
+            Contact Us via Email
         </h2>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
         <h3 class="my-4 text-3xl leading-tight">
-            Main Hero Message to sell yourself!
+            If you have any issues with your store or if you have any questions, we will be more than happy to help you.
         </h3>
         <button
-            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            Action!
+            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"><a
+                href="mailto:mohammedsebaa2610@gmail.com">Contact Us</a>
         </button>
     </section>
+
     <!--Footer-->
-    <footer class="bg-white">
-        <div class="container mx-auto px-8">
-            <div class="w-full flex flex-col md:flex-row py-6">
-                <div class="flex-1 mb-6 text-black">
-                    <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                        href="#">
-                        <!--Icon from: http://www.potlabicons.com/ -->
-                        <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512.005 512.005">
-                            <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502"
-                                transform="matrix(1,0,0,1,0,0)" />
-                            <path class="plane-take-off"
-                                d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z " />
-                        </svg>
-                        LANDING
-                    </a>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-gray-500 md:mb-6">Links</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Help</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Support</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-gray-500 md:mb-6">Legal</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Terms</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-gray-500 md:mb-6">Social</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Facebook</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Linkedin</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Twitter</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-1">
-                    <p class="uppercase text-gray-500 md:mb-6">Company</p>
-                    <ul class="list-reset mb-6">
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Official
-                                Blog</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">About Us</a>
-                        </li>
-                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
-                                class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector
-            created by freepik - www.freepik.com</a>
-    </footer>
+
     <!-- jQuery if you need it
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   -->
