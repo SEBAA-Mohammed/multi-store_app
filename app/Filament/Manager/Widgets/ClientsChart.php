@@ -2,16 +2,12 @@
 
 namespace App\Filament\Manager\Widgets;
 
-use App\Models\Store;
 use App\Models\User;
 use Filament\Widgets\ChartWidget;
-use Flowframe\Trend\Trend;
-use Flowframe\Trend\TrendValue;
-use Illuminate\Support\Facades\DB;
 
-class AdminsChart extends ChartWidget
+class ClientsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Admins Chart';
+    protected static ?string $heading = 'Clients Chart';
 
     protected static string $color = 'primary';
 
@@ -29,7 +25,7 @@ class AdminsChart extends ChartWidget
         });
 
         $data = User::query()
-            ->where('role', 'admin')
+            ->where('role', 'client')
             ->selectRaw('strftime("%m", created_at) as month, COUNT(id) as count')
             ->whereYear('created_at', $currentYear)
             ->groupBy('month')
@@ -46,7 +42,7 @@ class AdminsChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Number of Admins created',
+                    'label' => 'Number of Clients created',
                     'data' => $months->pluck('count'),
                 ],
             ],
