@@ -3,7 +3,10 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  email_verified_at: string;
+  adresse: string;
+  tel: string;
+  ville: string;
+  postal_code: string;
 }
 
 export interface Store {
@@ -62,6 +65,7 @@ export interface ProductImage {
 
 export interface Auth {
   user: User;
+  isLoggedIn: boolean;
 }
 
 export interface CheckoutEvent {

@@ -8,8 +8,10 @@ import { useCart } from '@/Contexts/cart-context';
 import { useToast } from '@/Components/ui/use-toast';
 import { isAbleToCheckout } from '@/lib/utils';
 import { usePaddle } from '@/Hooks/paddle';
+import { useTypedPage } from '@/Hooks/typed-page';
 
 export function Summary() {
+  const { auth } = useTypedPage();
   const { items, removeAll } = useCart();
   const { toast } = useToast();
   const { openCheckout, checkoutProcessEvent } = usePaddle();
@@ -46,13 +48,19 @@ export function Summary() {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
-        className="w-full mt-6"
-        disabled={isAbleToCheckout(items)}
-        onClick={() => openCheckout(items)}
-      >
-        Checkout
-      </Button>
+      {auth.isLoggedIn ? (
+        <Button
+          className="w-full mt-6"
+          disabled={isAbleToCheckout(items, auth.isLoggedIn)}
+          onClick={() => openCheckout(items)}
+        >
+          Checkout
+        </Button>
+      ) : (
+        <Button className="w-full mt-6" onClick={() => router.visit(route('register'))}>
+          Register to make checkout
+        </Button>
+      )}
     </div>
   );
 }
