@@ -28,13 +28,14 @@ class User extends Authenticatable implements HasTenants, FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
         'name',
+        'username',
         'adresse',
         'ville',
-        'email',
         'tel',
+        'postal_code',
         'role',
+        'email',
         'password'
     ];
 

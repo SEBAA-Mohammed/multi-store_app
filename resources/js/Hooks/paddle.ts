@@ -4,24 +4,6 @@ import { route } from 'ziggy-js';
 
 import { CheckoutEvent, Product, User } from '@/types';
 
-// export enum CheckoutEventNames {
-//   CHECKOUT_LOADED = 'checkout.loaded',
-//   CHECKOUT_CLOSED = 'checkout.closed',
-//   CHECKOUT_UPDATED = 'checkout.updated',
-//   CHECKOUT_COMPLETED = 'checkout.completed',
-//   CHECKOUT_ERROR = 'checkout.error',
-//   CHECKOUT_FAILED = 'checkout.failed',
-// }
-
-// export enum CheckoutEventsStatus {
-//   DRAFT = 'draft',
-//   READY = 'ready',
-//   COMPLETED = 'completed',
-//   BILLED = 'billed',
-//   canceled = 'canceled',
-//   PAST_DUE = 'past_due',
-// }
-
 export function usePaddle() {
   const [paddle, setPaddle] = useState<Paddle>();
   const [checkoutProcessEvent, setCheckoutProcessEvent] = useState<CheckoutEvent>();
@@ -55,7 +37,7 @@ export function usePaddle() {
       settings: {
         allowedPaymentMethods: ['paypal', 'apple_pay', 'google_pay', 'card'],
         theme: 'light',
-        successUrl: route('cart', { _query: { success: true } }),
+        successUrl: route('home', { status: checkoutProcessEvent?.status }),
       },
       items: priceIds,
       customer: {

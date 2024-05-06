@@ -23,7 +23,7 @@ export function Summary() {
 
     if (checkoutProcessEvent?.status === 'completed') {
       toast({ title: 'Success', description: 'Payment completed ✅.' });
-      // removeAll();
+      removeAll();
     }
 
     if (checkoutProcessEvent?.status === 'failed') {
@@ -32,8 +32,9 @@ export function Summary() {
         title: 'Canceled',
         description: 'Something went wrong ❌.',
       });
+      router.visit(route('checkout', { status: checkoutProcessEvent?.status }));
     }
-  }, [checkoutProcessEvent, removeAll]);
+  }, [checkoutProcessEvent]);
 
   const totalPrice = items.reduce((total, item) => {
     return total + Number(item.price);
