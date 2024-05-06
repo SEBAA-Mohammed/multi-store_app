@@ -10,6 +10,10 @@ import { route } from 'ziggy-js';
 export default function Register() {
   const { data, setData, post, processing, errors, reset } = useForm({
     name: '',
+    adresse: '',
+    ville: '',
+    tel: '',
+    postal_code: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -47,6 +51,72 @@ export default function Register() {
           />
 
           <InputError message={errors.name} className="mt-2" />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="adresse" value="Adresse" />
+
+          <TextInput
+            id="adresse"
+            name="adresse"
+            value={data.adresse}
+            className="mt-1 block w-full"
+            isFocused={true}
+            onChange={(e) => setData('adresse', e.target.value)}
+            required
+          />
+
+          <InputError message={errors.adresse} className="mt-2" />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="ville" value="Ville" />
+
+          <TextInput
+            id="ville"
+            name="ville"
+            value={data.ville}
+            className="mt-1 block w-full"
+            isFocused={true}
+            onChange={(e) => setData('ville', e.target.value)}
+            required
+          />
+
+          <InputError message={errors.ville} className="mt-2" />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="tel" value="Telephone" />
+
+          <TextInput
+            type="tel"
+            id="tel"
+            name="tel"
+            value={data.tel}
+            className="mt-1 block w-full"
+            isFocused={true}
+            onChange={(e) => setData('tel', e.target.value)}
+            required
+          />
+
+          <InputError message={errors.tel} className="mt-2" />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="postal_code" value="Code Postale" />
+
+          <TextInput
+            type="number"
+            id="postal_code"
+            name="postal_code"
+            value={data.postal_code}
+            className="mt-1 block w-full"
+            isFocused={true}
+            onChange={(e) => setData('postal_code', e.target.value)}
+            required
+          />
+
+          <InputError message={errors.postal_code} className="mt-2" />
         </div>
 
         <div className="mt-4">

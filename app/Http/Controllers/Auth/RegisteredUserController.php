@@ -33,12 +33,20 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'adresse' => 'required|string|max:255',
+            'ville' => 'required|string|max:255',
+            'tel' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'adresse' => $request->adresse,
+            'ville' => $request->ville,
+            'tel' => $request->tel,
+            'postal_code' => $request->postal_code,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -47,6 +55,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('home');
     }
 }

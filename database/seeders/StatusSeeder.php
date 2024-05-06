@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Enums\OrderStatus;
 use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\DB;
 
 class StatusSeeder extends Seeder
 {
@@ -15,6 +14,32 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        Status::factory(5)->create();
+        Status::insert([
+            [
+                'name' => OrderStatus::PROCESSING,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => OrderStatus::SHIPPED,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => OrderStatus::DELIVERED,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => OrderStatus::CANCELLED,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => OrderStatus::COMPLETED,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ]);
     }
 }

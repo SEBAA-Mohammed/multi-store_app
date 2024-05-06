@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,8 @@ class Product extends Model
         'category_id',
         'brand_id',
         'unit_id',
+        'paddle_product_id',
+        'paddle_price_id',
         'store_id'
     ];
 
@@ -58,5 +61,10 @@ class Product extends Model
     public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function getPriceTTC(): int
+    {
+        return (int) round($this->prix_ht * (1 + $this->tva), 0);
     }
 }

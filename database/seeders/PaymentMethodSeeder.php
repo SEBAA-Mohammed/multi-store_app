@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\PaymentMethod as PaymentType;
+use App\Models\PaymentMethod;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\DB;
 
 class PaymentMethodSeeder extends Seeder
 {
@@ -14,12 +13,37 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
-        foreach (range(1, 10) as $index) {
-            DB::table('payment_methods')->insert([
-                'name' => $faker->word,
-            ]);
-        }
+        PaymentMethod::insert([
+            [
+                'name' => PaymentType::NONE,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => PaymentType::CARD,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => PaymentType::PAYPAL,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => PaymentType::WIRE_TRANSFER,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => PaymentType::GOOGLE_PAY,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => PaymentType::APPLE_PAY,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ]);
     }
 }

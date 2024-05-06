@@ -3,7 +3,10 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  email_verified_at: string;
+  adresse: string;
+  tel: string;
+  ville: string;
+  postal_code: string;
 }
 
 export interface Store {
@@ -46,6 +49,8 @@ export interface Product {
   description: string;
   stock: number;
   rating: number;
+  product_id?: string;
+  price_id?: string;
   images: ProductImage[];
   category: Category;
   brand?: Brand;
@@ -60,6 +65,12 @@ export interface ProductImage {
 
 export interface Auth {
   user: User;
+  isLoggedIn: boolean;
+}
+
+export interface CheckoutEvent {
+  status: 'initialized' | 'failed' | 'completed';
+  message?: string;
 }
 
 export type InertiaSharedProps<T = {}> = T & {

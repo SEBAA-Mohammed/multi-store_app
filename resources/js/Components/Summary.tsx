@@ -1,42 +1,44 @@
-// import { useEffect } from "react";
-// import { useSearchParams } from "next/navigation";
+import { router } from '@inertiajs/react';
+import { useEffect } from 'react';
+import { route } from 'ziggy-js';
 
 import { Button } from '@/Components/ui/button';
 import { Currency } from '@/Components/ui/currency';
 import { useCart } from '@/Contexts/cart-context';
 import { useToast } from '@/Components/ui/use-toast';
+import { isAbleToCheckout } from '@/lib/utils';
+import { usePaddle } from '@/Hooks/paddle';
+import { useTypedPage } from '@/Hooks/typed-page';
 
 export function Summary() {
-  //   const searchParams = useSearchParams();
+  const { auth } = useTypedPage();
   const { items, removeAll } = useCart();
   const { toast } = useToast();
+  const { openCheckout, checkoutProcessEvent } = usePaddle();
 
-  // useEffect(() => {
-  //   if (searchParams.get('success')) {
-  //   toast({ title: 'Success', description: 'Payment completed.' });
-  //     removeAll();
-  //   }
+  useEffect(() => {
+    if (checkoutProcessEvent?.status === 'initialized') {
+      router.visit(route('checkout', { status: checkoutProcessEvent?.status }));
+    }
 
-  //   if (searchParams.get('canceled')) {
-  //   toast({
-  //     variant: 'destructive',
-  //     title: 'Canceled',
-  //     description: 'Something went wrong.',
-  //   });
-  //   }
-  // }, [searchParams, removeAll]);
+    if (checkoutProcessEvent?.status === 'completed') {
+      toast({ title: 'Success', description: 'Payment completed ✅.' });
+      removeAll();
+    }
+
+    if (checkoutProcessEvent?.status === 'failed') {
+      toast({
+        variant: 'destructive',
+        title: 'Canceled',
+        description: 'Something went wrong ❌.',
+      });
+      router.visit(route('checkout', { status: checkoutProcessEvent?.status }));
+    }
+  }, [checkoutProcessEvent]);
 
   const totalPrice = items.reduce((total, item) => {
     return total + Number(item.price);
   }, 0);
-
-  //   const onCheckout = async () => {
-  //     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-  //       productIds: items.map((item) => item.id),
-  //     });
-
-  //     window.location = response.data.url;
-  //   };
 
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
@@ -47,13 +49,19 @@ export function Summary() {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
-        className="w-full mt-6"
-        // onClick={onCheckout}
-        disabled={items.length === 0}
-      >
-        Checkout
-      </Button>
+      {auth.isLoggedIn ? (
+        <Button
+          className="w-full mt-6"
+          disabled={isAbleToCheckout(items, auth.isLoggedIn)}
+          onClick={() => openCheckout(auth.user, items)}
+        >
+          Checkout
+        </Button>
+      ) : (
+        <Button className="w-full mt-6" onClick={() => router.visit(route('register'))}>
+          Register to make checkout
+        </Button>
+      )}
     </div>
   );
 }

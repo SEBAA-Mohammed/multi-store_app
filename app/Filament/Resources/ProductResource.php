@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class ProductResource extends Resource
 {
@@ -24,12 +25,11 @@ class ProductResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Product informations')
+                Forms\Components\Section::make('Product information')
                     ->schema([
                         Forms\Components\Select::make('category_id')
                             ->label('Category')
@@ -83,7 +83,6 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('tva')
                     ->numeric()
                     ->sortable(),
-
                 Tables\Columns\TextColumn::make('stock')
                     ->numeric()
                     ->sortable(),
@@ -125,13 +124,11 @@ class ProductResource extends Resource
         return Repeater::make('images')
             ->relationship()
             ->schema([
-                Forms\Components\FileUpload::make('image_url')
+                Forms\Components\FileUpload::make('url')
                     ->image()
                     ->required(),
             ]);
     }
-
-
 
     public static function getRelations(): array
     {

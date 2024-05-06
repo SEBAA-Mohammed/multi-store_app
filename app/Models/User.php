@@ -15,11 +15,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
+use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements HasTenants, FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -27,13 +28,14 @@ class User extends Authenticatable implements HasTenants, FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
         'name',
+        'username',
         'adresse',
         'ville',
-        'email',
         'tel',
+        'postal_code',
         'role',
+        'email',
         'password'
     ];
 

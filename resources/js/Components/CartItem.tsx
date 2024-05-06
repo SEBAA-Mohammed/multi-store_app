@@ -19,7 +19,11 @@ export function CartItem({ data }: CartItemProps) {
   return (
     <li className="flex py-6 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
-        <img src={data.images[0].url} alt="" className="h-full w-full object-cover object-center" />
+        <img
+          src={data?.images[0]?.url}
+          alt=""
+          className="h-full w-full object-cover object-center"
+        />
       </div>
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
         <div className="absolute z-10 right-0 top-0">
