@@ -7,6 +7,7 @@ export interface User {
   tel: string;
   ville: string;
   postal_code: string;
+  email_verified_at: string;
 }
 
 export interface Store {
