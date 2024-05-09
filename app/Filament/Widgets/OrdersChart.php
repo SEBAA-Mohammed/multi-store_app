@@ -17,7 +17,18 @@ class OrdersChart extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Trend::model(Order::class)
+        // $data = Trend::model(Order::class)
+        //     ->between(
+        //         start: now()->startOfYear(),
+        //         end: now()->endOfYear(),
+        //     )
+        //     ->perMonth()
+        //     ->count();
+
+        $data = Trend::query(
+            Order::query()
+                ->where('store_id', '01HXF60TKGASKCAF067B1NX3BF')
+        )
             ->between(
                 start: now()->startOfYear(),
                 end: now()->endOfYear(),
