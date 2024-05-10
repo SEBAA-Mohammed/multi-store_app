@@ -15,8 +15,12 @@ class CustomersChart extends ChartWidget
 
     protected function getData(): array
     {
+
+        $currentStore = filament()->getTenant()->id;
+
         $data = Order::query()
             ->selectRaw('strftime("%Y-%m", created_at) as month, COUNT(DISTINCT user_id) as count')
+            ->where('store_id', $currentStore)
             ->groupBy('month')
             ->get();
 
