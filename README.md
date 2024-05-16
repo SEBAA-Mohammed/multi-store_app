@@ -16,21 +16,21 @@ npm install
 ```bash
 npm run build
 ```
-5. Generate Application Key
+5. Create `.env` based on the `.env.example`:
+```bash
+cp .env.example .env
+```
+6. Generate Application Key
 ```bash
 php artisan key:generate
 ```
-6. Copy Environment Variables
-```bash
-cp .env.example .env
-```
 7. Create SQLite Database File
 ```bash
-cp .env.example .env
+touch database/database.sqlite
 ```
 8. Run Migrations
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 9. Create symlink storage 
 ```bash
