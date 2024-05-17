@@ -32,8 +32,8 @@ return [
     ],
 
     'paddle' => [
-        'env' => env('VITE_PADDLE_ENV', 'sandbox'),
-        'client_side_token' => env('VITE_PADDLE_CLIENT_SIDE_TOKEN', ''),
+        'env' => env('PADDLE_ENV', 'sandbox'),
+        'client_side_token' => env('PADDLE_CLIENT_SIDE_TOKEN', ''),
         'api_key' => env('PADDLE_API_KEY', ''),
         'webhook' => env('PADDLE_WEBHOOK_SECRET', '')
     ]
