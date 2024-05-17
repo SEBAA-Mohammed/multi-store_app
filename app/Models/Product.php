@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -63,8 +64,15 @@ class Product extends Model
         return $this->belongsTo(Store::class);
     }
 
-    public function getPriceTTC(): int
+    protected function getPriceTTCAttribute(): int
     {
-        return (int) round($this->prix_ht * (1 + $this->tva), 0);
+        $price_with_tax = round($this->prix_ht * (1 + $this->tva), 2);
+        return $this->unroundPrice($price_with_tax);
+    }
+
+    private function unroundPrice($price): int
+    {
+        $price_without_decimal = str_replace('.', '', $price);
+        return $price_without_decimal * 100;
     }
 }
