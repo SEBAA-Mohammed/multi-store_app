@@ -15,9 +15,10 @@ class OrderDetail extends Model
         'product_id',
         'qte',
         'prix_achat',
-        'tva_achat'
+        'tva_achat',
+        'paddle_transaction_id',
+        'paddle_invoice_id'
     ];
-
 
     public function order(): BelongsTo
     {

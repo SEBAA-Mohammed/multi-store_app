@@ -20,7 +20,6 @@ class Order extends Model
         'store_id',
     ];
 
-
     public function orderDetails(): HasMany
     {
         return $this->hasMany(OrderDetail::class);
