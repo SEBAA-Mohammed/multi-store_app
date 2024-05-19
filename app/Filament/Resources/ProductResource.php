@@ -27,21 +27,24 @@ class ProductResource extends Resource
 
     public static function form(Form $form): Form
     {
+
+        $currentStore = filament()->getTenant()->id;
+
         return $form
             ->schema([
                 Forms\Components\Section::make('Product information')
                     ->schema([
                         Forms\Components\Select::make('category_id')
                             ->label('Category')
-                            ->relationship('category', 'name')
+                            ->relationship('category', 'name', modifyQueryUsing: fn (Builder $query) => $query->where('store_id', '=', $currentStore))
                             ->required(),
                         Forms\Components\Select::make('brand_id')
                             ->label('Brand')
-                            ->relationship('brand', 'name')
+                            ->relationship('brand', 'name', modifyQueryUsing: fn (Builder $query) => $query->where('store_id', '=', $currentStore))
                             ->required(),
                         Forms\Components\Select::make('unit_id')
                             ->label('Unit')
-                            ->relationship('unit', 'name')
+                            ->relationship('unit', 'name', modifyQueryUsing: fn (Builder $query) => $query->where('store_id', '=', $currentStore))
                             ->required(),
                         Forms\Components\TextInput::make('barcode')
                             ->required(),
