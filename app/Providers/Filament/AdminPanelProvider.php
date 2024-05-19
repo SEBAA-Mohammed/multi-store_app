@@ -42,6 +42,7 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
+            ->favicon(asset('storage/app_images/logo.svg'))
             ->brandName('Store Builder')
             ->brandLogo(asset('storage/app_images/logo.svg'))
             ->font('Poppins')
