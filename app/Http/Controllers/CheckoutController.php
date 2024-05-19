@@ -8,6 +8,7 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -59,26 +60,55 @@ class CheckoutController extends Controller
     {
         sleep(2);
 
-        $transaction = Http::withToken(config('services.paddle.api_key'))->get('https://sandbox-api.paddle.com/transactions?order_by=created_at[DESC]')->collect()->first()[0];
+        // Fetch the latest transaction
+        $response = Http::withToken(config('services.paddle.api_key'))->get('https://sandbox-api.paddle.com/transactions?order_by=created_at[DESC]');
 
-        sleep(2);
+        if ($response->successful()) {
+            $transactions = $response->collect()->first();
+            if (!empty($transactions) && is_array($transactions)) {
+                $transaction = $transactions[0];
 
-        Order::orderBy('id', 'desc')->first()->update([
-            'is_paid' => true,
-            'payment_method_id' => 2,
-            'status_id' => 5,
-        ]);
+                // Debugging: Log the transaction to check its structure
+                Log::debug('Paddle Transaction:', $transaction);
 
-        OrderDetail::create([
-            'qte' => count($transaction['items']),
-            'tva_achat' => $transaction['items'][0]['price']['custom_data']['tva'],
-            'prix_achat' => $transaction['details']['totals']['total'],
-            'paddle_transaction_id' => $transaction['id'],
-            'paddle_invoice_id' => $transaction['invoice_id'],
-            'order_id' => 5,
-            'product_id' => 5,
-        ]);
+                // Ensure the required fields are present
+                if (isset($transaction['id'], $transaction['invoice_id'])) {
+                    sleep(2);
+
+                    $order = Order::orderBy('id', 'desc')->first();
+
+                    // Check if order exists before updating
+                    if ($order) {
+                        $order->update([
+                            'is_paid' => true,
+                            'payment_method_id' => 2,
+                            'status_id' => 5,
+                        ]);
+
+                        // Create OrderDetail
+                        OrderDetail::create([
+                            'qte' => count($transaction['items']),
+                            'tva_achat' => $transaction['items'][0]['price']['custom_data']['tva'],
+                            'prix_achat' => (int) round($transaction['details']['totals']['total'], 2),
+                            'paddle_transaction_id' => $transaction['id'],
+                            'paddle_invoice_id' => $transaction['invoice_id'],
+                            'order_id' => $order->id, // Dynamically set the order ID
+                            'product_id' => 5, // Assuming static product ID, adjust as necessary
+                        ]);
+                    } else {
+                        Log::error('No order found to update.');
+                    }
+                } else {
+                    Log::error('Transaction ID or Invoice ID is missing in the response.');
+                }
+            } else {
+                Log::error('Transactions array is empty or invalid.');
+            }
+        } else {
+            Log::error('Failed to fetch transactions from Paddle API.');
+        }
     }
+
 
     protected function failOrder()
     {
