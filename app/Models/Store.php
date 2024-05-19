@@ -95,4 +95,19 @@ class Store extends Model implements HasCurrentTenantLabel
 
         return $slug ? '/' . auth()->user()->username . '/' . $slug : '';
     }
+
+    // public static function getStoreUrlManager(Store $record): string
+    // {
+    //     // dd($record);
+    //     // Fetch the user related to the store
+    //     $user = User::findOrFail($record->user_id);
+
+    //     // Ensure the user exists and has a username
+    //     if ($user && $user->username) {
+    //         return '/' . $user->username . '/' . $record->slug;
+    //     }
+
+    //     // Return a default value or throw an exception if needed
+    //     return '/';
+    // }
 }
