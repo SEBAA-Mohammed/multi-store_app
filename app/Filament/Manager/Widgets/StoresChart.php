@@ -19,8 +19,8 @@ class StoresChart extends ChartWidget
     {
         $data = Trend::model(Store::class)
             ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
+                start: now()->subMonths(12),
+                end: now(),
             )
             ->perMonth()
             ->count();
