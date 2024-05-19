@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('tva');
             $table->text('description');
             $table->double('stock');
-            $table->double('rating');
+            $table->double('rating')->default(5);
             $table->string('paddle_product_id')->nullable();
             $table->string('paddle_price_id')->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();

@@ -62,9 +62,6 @@ class ProductResource extends Resource
                         Forms\Components\TextInput::make('stock')
                             ->required()
                             ->numeric(),
-                        Forms\Components\TextInput::make('rating')
-                            ->required()
-                            ->numeric(),
                     ]),
                 Forms\Components\Section::make('Product Images')
                     ->schema([
