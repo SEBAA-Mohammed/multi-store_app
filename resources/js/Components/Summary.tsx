@@ -24,6 +24,7 @@ export function Summary() {
     if (checkoutProcessEvent?.status === 'completed') {
       toast({ title: 'Success', description: 'Payment completed ✅.' });
       removeAll();
+      router.get(route('checkout', { status: checkoutProcessEvent?.status }));
     }
 
     if (checkoutProcessEvent?.status === 'failed') {

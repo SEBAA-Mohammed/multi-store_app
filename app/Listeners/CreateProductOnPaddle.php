@@ -29,7 +29,14 @@ class CreateProductOnPaddle
                 'name' => $event->product->designation,
                 'description' => $event->product->description,
                 'tax_category' => 'standard',
-                'type' => 'standard'
+                'type' => 'standard',
+                'custom_data' => [
+                    'barcode' => $event->product->barcode,
+                    'category_id' => $event->product->category_id,
+                    'brand_id' => $event->product->brand_id,
+                    'unit_id' => $event->product->unit_id,
+                    'store_id' => $event->product->store_id
+                ]
             ]);
 
         $responseDataProduct = $responseProduct->json();
@@ -45,14 +52,18 @@ class CreateProductOnPaddle
                     'description' => $event->product->description,
                     'product_id' => $productId,
                     'unit_price' => [
-                        'amount' => (string) $event->product->getPriceTTC(),
+                        'amount' => (string) $event->product->priceTTC,
                         'currency_code' => 'USD'
                     ],
                     'quantity' => [
                         'minimum' => 1,
                         'maximum' => (int) $event->product->stock
                     ],
-                    'type' => 'standard'
+                    'type' => 'standard',
+                    'custom_data' => [
+                        'tva' => $event->product->tva,
+                        'store_id' => $event->product->store_id
+                    ]
                 ]);
 
             $responseDataPrice = $responsePrice->json();
