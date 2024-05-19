@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
 {
@@ -15,7 +17,6 @@ class CheckoutController extends Controller
     public function __invoke(Request $request)
     {
         $store = Store::where('slug', $request->route('store'))->firstOrFail();
-
         if (!in_array($request->query('status'), ['initialized', 'completed', 'failed'])) {
             abort(400, 'Invalid status.');
         }
@@ -56,11 +57,26 @@ class CheckoutController extends Controller
 
     protected function completeOrder()
     {
-        $order = Order::latest()->first();
-        $order->update([
+        sleep(2);
+
+        $transaction = Http::withToken(config('services.paddle.api_key'))->get('https://sandbox-api.paddle.com/transactions?order_by=created_at[DESC]')->collect()->first()[0];
+
+        sleep(2);
+
+        Order::orderBy('id', 'desc')->first()->update([
             'is_paid' => true,
             'payment_method_id' => 2,
             'status_id' => 5,
+        ]);
+
+        OrderDetail::create([
+            'qte' => count($transaction['items']),
+            'tva_achat' => $transaction['items'][0]['price']['custom_data']['tva'],
+            'prix_achat' => $transaction['details']['totals']['total'],
+            'paddle_transaction_id' => $transaction['id'],
+            'paddle_invoice_id' => $transaction['invoice_id'],
+            'order_id' => 5,
+            'product_id' => 5,
         ]);
     }
 

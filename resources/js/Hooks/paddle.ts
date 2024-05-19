@@ -37,7 +37,7 @@ export function usePaddle() {
       settings: {
         allowedPaymentMethods: ['paypal', 'apple_pay', 'google_pay', 'card'],
         theme: 'light',
-        successUrl: route('home', { status: checkoutProcessEvent?.status }),
+        // successUrl: route('home', { status: checkoutProcessEvent?.status }),
       },
       items: priceIds,
       customer: {
