@@ -94,8 +94,11 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                ViewAction::make(),
-                EditAction::make(),
+                // Tables\Actions\ViewAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // ViewAction::make(),
+                // EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -141,8 +144,8 @@ class UserResource extends Resource
         return [
             'index' => ListUsers::route('/'),
             'create' => CreateUser::route('/create'),
-            'view' => ViewUser::route('/{record}'),
-            'edit' => EditUser::route('/{record}/edit'),
+            // 'view' => ViewUser::route('/{record}'),
+            // 'edit' => EditUser::route('/{record}/edit'),
         ];
     }
 }
