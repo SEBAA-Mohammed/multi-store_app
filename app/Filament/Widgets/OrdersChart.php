@@ -24,8 +24,8 @@ class OrdersChart extends ChartWidget
                 ->where('store_id', $currentStore)
         )
             ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
+                start: now()->subMonths(12),
+                end: now(),
             )
             ->perMonth()
             ->count();
