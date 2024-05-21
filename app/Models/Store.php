@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Routing\Route;
 
 class Store extends Model implements HasCurrentTenantLabel
 {
@@ -89,25 +90,17 @@ class Store extends Model implements HasCurrentTenantLabel
         return $this->hasMany(Product::class);
     }
 
-    public static function getStoreUrl(): string
+    public static function getStoreUrlForAdmin(): string
     {
         $slug = filament()->getTenant()?->slug;
 
         return $slug ? '/' . auth()->user()->username . '/' . $slug : '';
     }
 
-    // public static function getStoreUrlManager(Store $record): string
-    // {
-    //     // dd($record);
-    //     // Fetch the user related to the store
-    //     $user = User::findOrFail($record->user_id);
+    public static function getStoreUrlForManager(Store $store): string
+    {
+        $username = $store->members()->first()->username;
 
-    //     // Ensure the user exists and has a username
-    //     if ($user && $user->username) {
-    //         return '/' . $user->username . '/' . $record->slug;
-    //     }
-
-    //     // Return a default value or throw an exception if needed
-    //     return '/';
-    // }
+        return $store->slug ? '/' . $username . '/' . $store->slug : '';
+    }
 }

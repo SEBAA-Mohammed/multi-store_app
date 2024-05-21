@@ -109,23 +109,10 @@ class StoreResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                // Action::make('open_store')
-                //     ->label('Open Store')
-                //     ->url(fn (): string => Store::getStoreUrl())
-                //     ->openUrlInNewTab(),
-
-                // MenuItem::make()
-                //     ->label('View Store')
-                //     ->url(fn (): string => Store::getStoreUrl(), shouldOpenInNewTab: true)
-                //     ->icon('heroicon-o-building-storefront')
-                //     ->hidden(fn (): bool => empty(Store::getStoreUrl())),
-
                 Action::make('open_store')
                     ->label('Open Store')
-                    ->url(
-                        fn (Store $record): string =>
-                        asset($record::getStoreUrl())
-                    )
+                    ->url(fn (Store $store): string => Store::getStoreUrlForManager($store))
+                    ->icon('heroicon-o-building-storefront')
                     ->openUrlInNewTab(),
             ])
             ->bulkActions([
