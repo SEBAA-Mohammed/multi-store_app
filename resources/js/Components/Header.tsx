@@ -9,8 +9,6 @@ import { useTypedPage } from '@/Hooks/typed-page';
 export function Header() {
   const { current } = useTypedPage();
 
-  console.log(current.store.logo_url);
-
   return (
     <header className="border-b">
       <Container>
