@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Barryvdh\Debugbar\Facades\Debugbar;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -66,13 +64,6 @@ class Product extends Model
 
     protected function getPriceTTCAttribute(): int
     {
-        $price_with_tax = round($this->prix_ht * (1 + $this->tva), 2);
-        return $this->unroundPrice($price_with_tax);
-    }
-
-    private function unroundPrice($price): int
-    {
-        $price_without_decimal = str_replace('.', '', $price);
-        return $price_without_decimal * 100;
+        return round($this->prix_ht * (1 + $this->tva), 2) * 100;
     }
 }

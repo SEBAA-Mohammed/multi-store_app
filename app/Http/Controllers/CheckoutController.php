@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Store;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Store;
+use App\Models\OrderDetail;
+use App\Models\Order;
 
 class CheckoutController extends Controller
 {
@@ -63,13 +63,12 @@ class CheckoutController extends Controller
         // Fetch the latest transaction
         $response = Http::withToken(config('services.paddle.api_key'))->get('https://sandbox-api.paddle.com/transactions?order_by=created_at[DESC]');
 
+        sleep(2);
+
         if ($response->successful()) {
             $transactions = $response->collect()->first();
             if (!empty($transactions) && is_array($transactions)) {
                 $transaction = $transactions[0];
-
-                // Debugging: Log the transaction to check its structure
-                Log::debug('Paddle Transaction:', $transaction);
 
                 // Ensure the required fields are present
                 if (isset($transaction['id'], $transaction['invoice_id'])) {
@@ -92,8 +91,8 @@ class CheckoutController extends Controller
                             'prix_achat' => (int) round($transaction['details']['totals']['total'], 2),
                             'paddle_transaction_id' => $transaction['id'],
                             'paddle_invoice_id' => $transaction['invoice_id'],
-                            'order_id' => $order->id, // Dynamically set the order ID
-                            'product_id' => 5, // Assuming static product ID, adjust as necessary
+                            'order_id' => $order->id,
+                            'product_id' => 5,
                         ]);
                     } else {
                         Log::error('No order found to update.');
@@ -108,7 +107,6 @@ class CheckoutController extends Controller
             Log::error('Failed to fetch transactions from Paddle API.');
         }
     }
-
 
     protected function failOrder()
     {

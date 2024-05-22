@@ -2,18 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
-use App\Models\Product;
-use Filament\Forms;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Filament\Tables\Table;
+use Filament\Tables;
+use Filament\Resources\Resource;
+use Filament\Forms\Form;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms;
+use App\Models\Product;
+use App\Filament\Resources\ProductResource\Pages;
 
 class ProductResource extends Resource
 {
@@ -27,7 +24,6 @@ class ProductResource extends Resource
 
     public static function form(Form $form): Form
     {
-
         $currentStore = filament()->getTenant()->id;
 
         return $form
@@ -61,6 +57,11 @@ class ProductResource extends Resource
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('stock')
                             ->required()
+                            ->numeric(),
+                        Forms\Components\TextInput::make('rating')
+                            ->default(5)
+                            ->required()
+                            ->hidden()
                             ->numeric(),
                     ]),
                 Forms\Components\Section::make('Product Images')
