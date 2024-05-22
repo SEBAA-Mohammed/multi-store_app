@@ -14,7 +14,11 @@ export function Header() {
       <Container>
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
           <Link href={route('home')} className="ml-4 flex lg:ml-0 gap-x-2">
-            <p className="font-bold text-xl">STORE</p>
+            {current.store.logo_url ? (
+              <img src={current.store.logo_url} alt="" className="h-6 w-24" />
+            ) : (
+              <p className="font-bold text-xl uppercase">{current.store.name}</p>
+            )}
           </Link>
           <NavigationBar data={current.categories} />
           <NavbarActions />
