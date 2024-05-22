@@ -42,9 +42,9 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
-            ->favicon(asset('storage/app_images/logo.svg'))
+            ->favicon(asset('images/logo.svg'))
             ->brandName('Store Builder')
-            ->brandLogo(asset('storage/app_images/logo.svg'))
+            ->brandLogo(asset('images/logo.svg'))
             ->font('Poppins')
             ->sidebarCollapsibleOnDesktop()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

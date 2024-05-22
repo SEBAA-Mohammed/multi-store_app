@@ -8,7 +8,7 @@
     <title>
         Store Builder | Home
     </title>
-    <link rel="shortcut icon" type="x-icon" href="{{ asset('storage/app_images/logo.svg') }}">
+    <link rel="shortcut icon" type="x-icon" href="{{ asset('images/logo.svg') }}">
     <meta name="description" content="Simple landind page" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />

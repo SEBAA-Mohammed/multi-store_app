@@ -34,9 +34,9 @@ class ManagerPanelProvider extends PanelProvider
                 'success' => Color::Indigo,
                 'warning' => Color::Orange,
             ])
-            ->favicon(asset('storage/app_images/logo.svg'))
+            ->favicon(asset('images/logo.svg'))
             ->brandName('Store Builder')
-            ->brandLogo(asset('storage/app_images/logo.svg'))
+            ->brandLogo(asset('images/logo.svg'))
             ->font('Poppins')
             ->discoverResources(in: app_path('Filament/Manager/Resources'), for: 'App\\Filament\\Manager\\Resources')
             ->discoverPages(in: app_path('Filament/Manager/Pages'), for: 'App\\Filament\\Manager\\Pages')
