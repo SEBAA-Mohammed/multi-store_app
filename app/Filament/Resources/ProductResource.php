@@ -43,15 +43,18 @@ class ProductResource extends Resource
                             ->relationship('unit', 'name', modifyQueryUsing: fn (Builder $query) => $query->where('store_id', '=', $currentStore))
                             ->required(),
                         Forms\Components\TextInput::make('barcode')
-                            ->required(),
+                            ->required()
+                            ->numeric(),
                         Forms\Components\TextInput::make('designation')
                             ->required(),
                         Forms\Components\TextInput::make('prix_ht')
                             ->required()
-                            ->numeric(),
+                            ->numeric()
+                            ->inputMode('decimal'),
                         Forms\Components\TextInput::make('tva')
                             ->required()
-                            ->numeric(),
+                            ->numeric()
+                            ->inputMode('decimal'),
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpanFull(),
@@ -62,7 +65,8 @@ class ProductResource extends Resource
                             ->default(5)
                             ->required()
                             ->hidden()
-                            ->numeric(),
+                            ->numeric()
+                            ->inputMode('decimal'),
                     ]),
                 Forms\Components\Section::make('Product Images')
                     ->schema([
