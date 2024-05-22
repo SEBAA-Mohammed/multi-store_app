@@ -54,7 +54,9 @@ class ProductResource extends Resource
                         Forms\Components\TextInput::make('tva')
                             ->required()
                             ->numeric()
-                            ->inputMode('decimal'),
+                            ->inputMode('decimal')
+                            ->minValue(0.2)
+                            ->maxValue(0.8),
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpanFull(),
