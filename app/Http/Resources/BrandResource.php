@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class BrandResource extends JsonResource
 {
@@ -17,7 +17,7 @@ class BrandResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'logo' => $this->logo,
+            'logo' => $this->getFilePath($this->logo)
         ];
     }
 }

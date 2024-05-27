@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class StoreResource extends JsonResource
 {
@@ -18,8 +18,8 @@ class StoreResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'billboard_url' => $this->billboard_url,
-            'logo_url' => $this->logo_url,
+            'billboard_url' => $this->getFilePath($this->billboard_url),
+            'logo_url' => $this->getFilePath($this->logo_url),
             'email' => $this->email,
             'tel' => $this->tel,
             'adresse' => $this->adresse,

@@ -2,8 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class CategoryResource extends JsonResource
 {
@@ -17,7 +18,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'url' => $this->url,
+            'url' => $this->getFilePath($this->url),
             'store_id' => $this->store_id
         ];
     }
