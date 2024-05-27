@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Filament\Models\Contracts\HasCurrentTenantLabel;
+use App\Traits\GeneratesFilePaths;
 
 class Store extends Model implements HasCurrentTenantLabel
 {
-    use HasFactory;
+    use HasFactory, GeneratesFilePaths;
 
     protected $keyType = 'string';
 
