@@ -3,6 +3,8 @@
 namespace App\Filament\Pages\Tenancy;
 
 use App\Models\Store;
+use Filament\Forms;
+
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Illuminate\Support\Str;
@@ -34,7 +36,15 @@ class RegisterStore extends RegisterTenant
                     ->prefix(url('/') . '/' . auth()->user()->username . '/'),
                 Select::make('store_category_id')
                     ->relationship(name: 'storeCategory', titleAttribute: 'name')
-                    ->required()
+                    ->required(),
+                Forms\Components\FileUpload::make('logo_url')
+                    ->label("Choose a Logo for your Store")
+                    ->image()
+                    ->required(),
+                Forms\Components\FileUpload::make('billboard_url')
+                    ->label("Choose a Billboard for your Store")
+                    ->image()
+                    ->required(),
             ]);
     }
 
