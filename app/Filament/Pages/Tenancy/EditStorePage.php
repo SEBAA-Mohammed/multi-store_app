@@ -43,8 +43,6 @@ class EditStorePage extends EditTenantProfile
                     ->url(fn (): string => $currentStore->getStoreUrlForAdmin()),
                 // ->copyable()
                 // ->copyMessage('Copied!'),
-                TextInput::make('slug')
-                    ->required(),
                 Forms\Components\FileUpload::make('logo_url')
                     ->image(),
                 Forms\Components\FileUpload::make('billboard_url')
