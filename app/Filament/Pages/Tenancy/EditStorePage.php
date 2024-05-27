@@ -2,12 +2,10 @@
 
 namespace App\Filament\Pages\Tenancy;
 
-use App\Models\Store;
-use Filament\Forms\Form;
-use Filament\Forms;
-
-use Filament\Forms\Components\TextInput;
 use Filament\Pages\Tenancy\EditTenantProfile;
+use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms;
 
 class EditStorePage extends EditTenantProfile
 {
@@ -18,8 +16,6 @@ class EditStorePage extends EditTenantProfile
 
     public function form(Form $form): Form
     {
-        $currentStore = filament()->getTenant()->id;
-
         return $form
             ->schema([
                 TextInput::make('name')
@@ -38,11 +34,6 @@ class EditStorePage extends EditTenantProfile
                     ->required(),
                 TextInput::make('header')
                     ->required(),
-                TextInput::make('StoreUrl')
-                    ->label('Your Store URL , Tap to copy')
-                    ->url(fn (): string => $currentStore->getStoreUrlForAdmin()),
-                // ->copyable()
-                // ->copyMessage('Copied!'),
                 Forms\Components\FileUpload::make('logo_url')
                     ->image(),
                 Forms\Components\FileUpload::make('billboard_url')
