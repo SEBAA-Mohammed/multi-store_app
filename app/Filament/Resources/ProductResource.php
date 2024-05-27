@@ -7,6 +7,7 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Resources\Resource;
 use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms;
 use App\Models\Product;
@@ -28,7 +29,7 @@ class ProductResource extends Resource
 
         return $form
             ->schema([
-                Forms\Components\Section::make('Product information')
+                Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\Select::make('category_id')
                             ->label('Category')
@@ -41,22 +42,31 @@ class ProductResource extends Resource
                         Forms\Components\Select::make('unit_id')
                             ->label('Unit')
                             ->relationship('unit', 'name', modifyQueryUsing: fn (Builder $query) => $query->where('store_id', '=', $currentStore))
-                            ->required(),
+                            ->required()
+                    ])->columns(3),
+                Forms\Components\Section::make()
+                    ->schema([
                         Forms\Components\TextInput::make('barcode')
                             ->required()
                             ->numeric(),
                         Forms\Components\TextInput::make('designation')
                             ->required(),
-                        Forms\Components\TextInput::make('prix_ht')
+                    ])->columns(2),
+                Forms\Components\Section::make()
+                    ->schema([
+                        TextInput::make('prix_ht')
                             ->required()
                             ->numeric()
                             ->inputMode('decimal'),
-                        Forms\Components\TextInput::make('tva')
+                        TextInput::make('tva')
                             ->required()
                             ->numeric()
                             ->inputMode('decimal')
                             ->minValue(0.2)
-                            ->maxValue(0.8),
+                            ->maxValue(0.8)
+                    ])->columns(2),
+                Forms\Components\Section::make()
+                    ->schema([
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpanFull(),
