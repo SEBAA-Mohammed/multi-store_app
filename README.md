@@ -16,7 +16,7 @@ npm install
 ```bash
 npm run build
 ```
-5. Create `.env` based on the `.env.example`:
+5. Create `.env` based on the `.env.example`
 ```bash
 cp .env.example .env
 ```
@@ -24,9 +24,9 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
-7. Create SQLite Database File
-```bash
-touch database/database.sqlite
+7. Login into your MySQL database and create `store_builder` database
+```sql
+CREATE DATABASE store_builder;
 ```
 8. Run Migrations
 ```bash
