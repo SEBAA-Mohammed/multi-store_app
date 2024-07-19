@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->foreignId('store_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlid('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

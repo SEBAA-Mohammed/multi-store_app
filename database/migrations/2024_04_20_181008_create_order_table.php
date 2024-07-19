@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained()->cascadeOnDelete();
             $table->foreignId('status_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('store_id')->constrained('stores')->cascadeOnDelete();
+            $table->foreignUlid('store_id')->constrained('stores')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -30,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('orders');
     }
 };
+

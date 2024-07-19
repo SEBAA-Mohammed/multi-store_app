@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('store_user', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('store_id')->constrained();
+            $table->foreignUlid('store_id')->constrained();
         });
     }
 

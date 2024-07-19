@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('billboard_url')->nullable();
-            $table->string('logo_url')->nullable();
+            $table->text('logo_url')->nullable();
             $table->string('email')->nullable();
             $table->string('tel')->nullable();
             $table->string('adresse')->nullable();

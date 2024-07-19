@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
             $table->foreignId('unit_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('store_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlid('store_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
