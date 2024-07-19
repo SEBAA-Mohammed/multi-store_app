@@ -19,7 +19,7 @@ class CustomersChart extends ChartWidget
         $currentStore = filament()->getTenant()->id;
 
         $data = Order::query()
-            ->selectRaw('strftime("%Y-%m", created_at) as month, COUNT(DISTINCT user_id) as count')
+            ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(DISTINCT user_id) as count')
             ->where('store_id', $currentStore)
             ->groupBy('month')
             ->get();
@@ -35,7 +35,6 @@ class CustomersChart extends ChartWidget
         ];
     }
 
-
     protected function getOptions(): array
     {
         return [
@@ -50,10 +49,6 @@ class CustomersChart extends ChartWidget
         ];
     }
 
-
-
-
-    protected function getType(): string
     {
         return 'bar';
     }
