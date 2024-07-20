@@ -15,6 +15,8 @@ class Store extends Model implements HasCurrentTenantLabel
 {
     use HasFactory, GeneratesFilePaths;
 
+    protected $casts = [ 'id' => 'string' ];
+
     protected $keyType = 'string';
 
     public $incrementing = false;

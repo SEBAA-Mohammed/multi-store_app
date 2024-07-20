@@ -26,7 +26,7 @@ class ClientsChart extends ChartWidget
 
         $data = User::query()
             ->where('role', 'client')
-            ->selectRaw('strftime("%m", created_at) as month, COUNT(id) as count')
+            ->selectRaw('DATE_FORMAT(created_at, "%m") as month, COUNT(id) as count')
             ->whereYear('created_at', $currentYear)
             ->groupBy('month')
             ->get();

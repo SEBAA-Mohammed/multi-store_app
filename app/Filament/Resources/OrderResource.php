@@ -67,9 +67,6 @@ class OrderResource extends Resource
             ]);
     }
 
-
-
-
     public static function table(Table $table): Table
     {
         return $table
@@ -105,8 +102,6 @@ class OrderResource extends Resource
                 ]),
             ]);
     }
-
-
 
     public static function getItemsRepeater(): Repeater
     {
@@ -174,7 +169,6 @@ class OrderResource extends Resource
                     }, shouldOpenInNewTab: true)
                     ->hidden(fn (array $arguments, Repeater $component): bool => blank($component->getRawItemState($arguments['item'])['product_id'])),
             ])
-            ->orderColumn('sort')
             ->defaultItems(1)
             ->hiddenLabel()
             ->columns([
@@ -182,7 +176,6 @@ class OrderResource extends Resource
             ])
             ->required();
     }
-
 
     public static function getRelations(): array
     {

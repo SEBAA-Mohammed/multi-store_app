@@ -30,7 +30,7 @@ class AdminsChart extends ChartWidget
 
         $data = User::query()
             ->where('role', 'admin')
-            ->selectRaw('strftime("%m", created_at) as month, COUNT(id) as count')
+            ->selectRaw('DATE_FORMAT(created_at, "%m") as month, COUNT(id) as count')
             ->whereYear('created_at', $currentYear)
             ->groupBy('month')
             ->get();
@@ -56,9 +56,6 @@ class AdminsChart extends ChartWidget
         ];
     }
 
-
-
-
     protected function getOptions(): array
     {
         return [
@@ -72,9 +69,6 @@ class AdminsChart extends ChartWidget
             ],
         ];
     }
-
-
-
 
     protected function getType(): string
     {
