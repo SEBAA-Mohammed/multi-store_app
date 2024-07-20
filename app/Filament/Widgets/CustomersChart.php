@@ -49,6 +49,7 @@ class CustomersChart extends ChartWidget
         ];
     }
 
+    protected function getType(): string
     {
         return 'bar';
     }
