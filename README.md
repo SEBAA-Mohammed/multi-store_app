@@ -4,7 +4,7 @@
 
 StoreBuilder est un système de gestion de contenu (CMS) personnalisable conçu pour créer et gérer des boutiques en ligne. Développé selon une architecture multi-tenant (modèle de base de données unique), StoreBuilder permet aux utilisateurs de créer plusieurs boutiques, chacune gérée par son propre administrateur. Ce projet a été réalisé dans le cadre d'un stage chez [ArtiWeb](https://artiweb.ma/), une agence de marketing digital et de communication à Fès, au Maroc. L'objectif était de créer une plateforme accessible et conviviale pour les entrepreneurs, en particulier les novices, afin de lancer et gérer facilement leurs boutiques en ligne.
 
-[ PUT VIDEO HERE ]
+![Video showcase](docs/video/showcase.mp4)
 
 ## Table des matières
 
@@ -76,7 +76,7 @@ La gestion de projet s'est appuyée sur une méthodologie agile, mettant l'accen
 
 ### Architecture Multi-Tenancy (Base de Données Unique)
 
-[ Place photo here ]
+![Multi-Tenancy architecture with user roles](docs/pics/multi-tenant.png)
 
 Le multitenancy est un modèle de conception permettant à une seule instance d'application de servir plusieurs clients, appelés "locataires", en partageant la même base de données mais en séparant logiquement leurs données pour garantir confidentialité et sécurité. Dans une telle architecture, le schéma de la base de données inclut des informations spécifiques à chaque locataire, par exemple, une colonne pour l'identifiant du locataire dans chaque table, utilisé pour filtrer et séparer les données afin que chaque locataire ne puisse accéder qu'à ses propres informations.
 
@@ -86,7 +86,8 @@ Cette approche présente des avantages comme une réduction des coûts et une si
 
 La base de données de la plateforme e-commerce stocke des informations sur les produits, les utilisateurs, les boutiques et les transactions. Elle comprend plusieurs tables reliées par des clés étrangères pour garantir l'intégrité des données.
 
-[ PHOTO HERE ]
+![Database schema](docs/pics/schema.png)
+
 #### Principales Tables et Relations:
 - **Produits:** Stocke les détails des produits tels que le code-barres, le nom, le prix, la TVA, la description, la catégorie, la marque, l'unité de mesure, le stock disponible, la note moyenne, et la boutique associée.
 - **Catégories:** Stocke les catégories de produits liées aux produits et aux boutiques.
@@ -110,7 +111,7 @@ La base de données de la plateforme e-commerce stocke des informations sur les 
 
 #### Cas d'Utilisation:
 
-[ PHOTO HERE ]
+![UML usecase diagram](docs/pics/usecase.jpg)
 
 **Pour les Propriétaires de Boutique:**
 - **Créer une Boutique:** Créer et configurer une boutique en ligne.
