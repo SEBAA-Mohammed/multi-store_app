@@ -213,6 +213,13 @@ La base de données de la plateforme e-commerce stocke des informations sur les 
 
 ## B. L'exécution de ce projet
 
+> [!WARNING]  
+> Pour exécuter ce projet Laravel, vous devez utiliser PHP version 8.2 ou supérieure et activer les extensions PHP suivantes :
+> - intl
+> - zip
+> - sqlite3
+> - pdo_sqlite
+
 ### a. Cloner le Répertoire
 
 ```bash
