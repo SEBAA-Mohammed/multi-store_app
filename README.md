@@ -4,7 +4,49 @@
 
 StoreBuilder est un système de gestion de contenu (CMS) personnalisable conçu pour créer et gérer des boutiques en ligne. Développé selon une architecture multi-tenant (modèle de base de données unique), StoreBuilder permet aux utilisateurs de créer plusieurs boutiques, chacune gérée par son propre administrateur. Ce projet a été réalisé dans le cadre d'un stage chez [ArtiWeb](https://artiweb.ma/), une agence de marketing digital et de communication à Fès, au Maroc. L'objectif était de créer une plateforme accessible et conviviale pour les entrepreneurs, en particulier les novices, afin de lancer et gérer facilement leurs boutiques en ligne.
 
-![Video showcase](docs/video/showcase.mp4)
+## Vidéos de Présentation
+
+### Vidéo 1 : Connexion et Création d'une Boutique
+
+[Vidéo 1 : Connexion et Création d'une Boutique](docs/videos/showcase1.mp4)
+
+Dans cette vidéo, nous présentons comment se connecter en tant qu'administrateur, accéder au tableau de bord, visualiser une boutique pré-configurée, et créer (enregistrer) une nouvelle boutique e-commerce.
+
+### Vidéo 2 : Création et Visualisation d'une Catégorie
+
+[Vidéo 2 : Création et Visualisation d'une Catégorie](docs/videos/showcase2.mp4)
+
+Cette vidéo montre la création d'une nouvelle catégorie de produits et sa visualisation dans la boutique nouvellement créée.
+
+### Vidéo 3 : Création et Visualisation d'un Produit
+
+[Vidéo 3 : Création et Visualisation d'un Produit](docs/videos/showcase3.mp4)
+
+Dans cette vidéo, nous démontrons la création d'un nouveau produit et son affichage dans la boutique.
+
+### Vidéo 4 : Ajout d'un Produit au Panier et Transaction
+
+[Vidéo 4 : Ajout d'un Produit au Panier et Transaction](docs/videos/showcase4.mp4)
+
+Cette vidéo illustre le processus d'ajout d'un produit au panier et de réalisation d'une transaction en utilisant une carte de crédit de test.
+
+### Vidéo 5 : Vérification de la Transaction et Envoi de la Facture
+
+[Vidéo 5 : Vérification de la Transaction et Envoi de la Facture](docs/videos/showcase5.mp4)
+
+Après une transaction, cette vidéo montre la vérification de la transaction et l'envoi d'une facture au client par email, au format PDF.
+
+### Vidéo 6 : Revue de la Facture par l'Administrateur
+
+[Vidéo 6 : Revue de la Facture par l'Administrateur](docs/videos/showcase6.mp4)
+
+Cette vidéo explique comment l'administrateur (propriétaire de la boutique) peut revoir la facture pour une transaction donnée et consulter les détails de la transaction sur la plateforme de paiement Paddle.
+
+### Vidéo 7 : Connexion en tant que Manager
+
+[Vidéo 7 : Connexion en tant que Manager](docs/videos/showcase7.mp4)
+
+Dans cette dernière vidéo, nous montrons comment se connecter en tant que manager pour surveiller les boutiques créées par les administrateurs.
 
 ## Table des matières
 
